@@ -32,8 +32,7 @@ var City = require("./models/City");
 var passport = require("passport");
 app.use(passport.initialize()); // TODO test
 
-// Nous aurons besoin de 2 strategies :
-// - `local` permettra de gérer le login nécessitant un mot de passe
+// Local for login + password
 var LocalStrategy = require("passport-local").Strategy;
 passport.use(
   new LocalStrategy(
@@ -46,7 +45,7 @@ passport.use(
   )
 );
 
-// - `http-bearer` permettra de gérer toute les requêtes authentifiées à l'aide d'un `token`
+// authorization bearer
 var HTTPBearerStrategy = require("passport-http-bearer").Strategy;
 passport.use(new HTTPBearerStrategy(User.authenticateBearer())); // La méthode `authenticateBearer` a été déclarée dans le model User
 
@@ -57,23 +56,21 @@ app.get("/", function(req, res) {
 var cors = require("cors"); // to authorize request to the API from another domaine
 app.use("/api", cors());
 
-// Les routes sont séparées dans plusieurs fichiers
 var coreRoutes = require("./routes/core.js");
 var userRoutes = require("./routes/user.js");
 var roomRoutes = require("./routes/room.js");
-// Les routes relatives aux utilisateurs auront pour prefix d'URL `/user`
+
 app.use("/api", coreRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/room", roomRoutes);
 
-// Toutes les méthodes HTTP (GET, POST, etc.) des pages non trouvées afficheront une erreur 404
+// Error 404 for all verbs (GET, POST, etc.) when page not found.
 app.all("*", function(req, res) {
   res.status(404).json({ status: 404, error: "Not Found" });
 });
 
-// Le dernier middleware de la chaîne gérera les d'erreurs
-// Ce `error handler` doit définir obligatoirement 4 paramètres
-// Définition d'un middleware : https://expressjs.com/en/guide/writing-middleware.html
+// Error hundling middleware : https://expressjs.com/en/guide/writing-middleware.html
+// This middleware is call with next(err_msg) within a route
 app.use(function(err, req, res, next) {
   if (res.statusCode === 200) res.status(400);
   console.error(err);
@@ -83,7 +80,11 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(config.PORT, function() {
-  console.log(`API running on port ${config.PORT} en env: ${config.ENV}`);
+  console.log(
+    `API running on port ${
+      config.PORT
+    } | ${config.ENV.toUpperCase()} environement`
+  );
 });
 
 // TODO test
