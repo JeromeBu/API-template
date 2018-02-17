@@ -2,7 +2,7 @@
 
 npm install <!-- install packages -->
 
-npm run data <!-- seed -->
+npm run seed <!-- seed -->
 
 npm start <!-- start production server -->
 

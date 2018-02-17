@@ -1,6 +1,5 @@
 require("dotenv").config(); // allows to define env varibles in .env file
-
-const env = process.env.NODE_ENV || "dev"; // 'dev' or 'test'
+const env = process.env.NODE_ENV || "dev"; // 'dev',  'test' or 'production'
 
 const config = {
   ENV: env,

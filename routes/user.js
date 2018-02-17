@@ -2,6 +2,11 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 var uid2 = require("uid2");
+var mailgun = require("mailgun-js")({
+  apiKey: process.env.MAILGUN_API_KEY,
+  domain: process.env.MAILGUN_DOMAIN
+});
+var confirmEmail = require("../emails/confirmationEmail");
 
 var User = require("../models/User.js");
 
@@ -9,10 +14,12 @@ router.post("/sign_up", function(req, res) {
   User.register(
     new User({
       email: req.body.email,
-      // L'inscription créera le token permettant de s'authentifier auprès de la strategie `http-bearer`
-      token: uid2(16), // uid2 permet de générer une clef aléatoirement. Ce token devra être regénérer lorsque l'utilisateur changera son mot de passe
+      token: uid2(32), // Token created with uid2. Will be used for Bear strategy. Should be regenerated when password is changed.
+      emailCheck: {
+        token: uid2(20),
+        createdAt: new Date()
+      },
       account: {
-        username: req.body.username,
         name: req.body.name,
         description: req.body.description
       }
@@ -24,10 +31,40 @@ router.post("/sign_up", function(req, res) {
         // TODO test
         res.status(400).json({ error: err.message });
       } else {
-        res.json({ _id: user._id, token: user.token, account: user.account });
+        var url = req.headers.host;
+        mailgun.messages().send(confirmEmail(url, user), function(error, body) {
+          console.error("Mail Error", error);
+          console.log("Mail Body", body);
+          res.json({ _id: user._id, token: user.token, account: user.account });
+        });
       }
     }
   );
+});
+
+router.route("/emailCheck").get(function(req, res) {
+  var token = req.query.token;
+  if (!token) return res.status(400).send("No token specified");
+  User.findOne({ "emailCheck.token": token }, function(err, user) {
+    if (err) return res.status(400).send(err);
+    if (!user) return res.status(400).send("Invalid token");
+    if (user.emailCheck.valid)
+      return res.send("You have already confirmed your email");
+    var yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    if (user.emailCheck.createdAt < yesterday)
+      return res.status(400).send("This link is outdated (older than 24h)");
+
+    console.log("\n \n yesturday : ", yesterday);
+    console.log("user.emailCheck.createdAt : ", user.emailCheck.createdAt);
+    console.log("\n user: ", user, "\n \n");
+    user.emailCheck.valid = true;
+    user.save(function(err) {
+      if (err) return res.send(err);
+      console.log("User email has been confirmed with succes");
+      res.json({ message: "Your email has been verified with success" });
+    });
+  });
 });
 
 router.post("/log_in", function(req, res, next) {

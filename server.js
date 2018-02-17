@@ -1,4 +1,3 @@
-require("dotenv").config(); // allows to define env varibles in .env file
 var config = require("./config");
 
 var mongoose = require("mongoose");
@@ -11,9 +10,9 @@ var express = require("express");
 var app = express();
 
 var morgan = require("morgan"); // in order to log requests
-//we don't want it in test mode has it interfer with terminal display of test results
+//we don't want it in test mode as it interfers with terminal display of test results
 if (config.ENV !== "test") {
-  app.use(morgan("combined"));
+  app.use(morgan("dev"));
 }
 
 var helmet = require("helmet"); // protection package
@@ -69,7 +68,7 @@ app.all("*", function(req, res) {
   res.status(404).json({ status: 404, error: "Not Found" });
 });
 
-// Error hundling middleware : https://expressjs.com/en/guide/writing-middleware.html
+// Error handling middleware
 // This middleware is call with next(err_msg) within a route
 app.use(function(err, req, res, next) {
   if (res.statusCode === 200) res.status(400);
@@ -88,4 +87,4 @@ app.listen(config.PORT, function() {
 });
 
 // TODO test
-// console.log(`process.env.NODE_ENV = ${process.env.NODE_ENV}`);
+// console.log(`config.ENV = ${config.ENV}`);

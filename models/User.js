@@ -4,12 +4,17 @@ var passportLocalMongoose = require("passport-local-mongoose");
 var UserSchema = new mongoose.Schema({
   shortId: Number, // un shortId nous est utile au moment de l'importation du jeu de données `npm run data` car les relations y sont identifiées à l'aide d'identifiants courts
   email: String,
+  emailCheck: {
+    valid: { type: Boolean, default: false },
+    token: String,
+    createdAt: Date
+  },
   password: String,
   token: String, // Le token permettra d'authentifier l'utilisateur à l'aide du package `passport-http-bearer`
 
   // Nous choisisons de créer un objet `account` dans lequel nous stockerons les informations non sensibles
   account: {
-    username: { type: String, unique: true, required: true },
+    name: String,
     description: String,
     photos: [String],
     favorites: [
