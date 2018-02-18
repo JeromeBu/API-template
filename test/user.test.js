@@ -20,6 +20,7 @@ describe("Users", () => {
       done();
     });
   });
+
   describe("POST /api/user/sign_up", function() {
     it("it should not POST a user without password field", done => {
       let user = {
@@ -85,26 +86,25 @@ describe("Users", () => {
 
   describe("GET /api/user/emailCheck", function() {
     it("It should confirm email", function(done) {
-      let validUser = factory.validUser();
-      validUser.save();
-      chai
-        .request(server)
-        .get(
-          `/api/user/emailCheck?token=${validUser.emailCheck.token}&email=${
-            validUser.email
-          }`
-        )
-        .end(function(err, res) {
-          should.not.exist(err);
-          res.should.have.status(200);
-          res.should.be.a("object");
-          res.body.should.have
-            .property("message")
-            .that.include("Your email has been verified with success");
-          done();
-        });
+      factory.user({}, function(validUser) {
+        chai
+          .request(server)
+          .get(
+            `/api/user/emailCheck?token=${validUser.emailCheck.token}&email=${
+              validUser.email
+            }`
+          )
+          .end(function(err, res) {
+            should.not.exist(err);
+            res.should.have.status(200);
+            res.should.be.a("object");
+            res.body.should.have
+              .property("message")
+              .that.include("Your email has been verified with success");
+            done();
+          });
+      });
     });
-
     it("respond an error when called without token", function(done) {
       chai
         .request(server)
@@ -117,7 +117,6 @@ describe("Users", () => {
           done();
         });
     });
-
     it("respond an error when called with invalid token", function(done) {
       chai
         .request(server)
@@ -132,25 +131,54 @@ describe("Users", () => {
         });
     });
     it("respond respond already valid when called on already valid user", function(done) {
-      let validUser = factory.validUser();
-      validUser.emailCheck.valid = true;
-      validUser.save();
-      chai
-        .request(server)
-        .get(
-          `/api/user/emailCheck?token=${validUser.emailCheck.token}&email=${
-            validUser.email
-          }`
-        )
-        .end(function(err, res) {
-          // expect(err).to.be.null;
-          // expect(res).to.be.json;
-          res.should.have.status(206);
-          res.body.should.have
-            .property("message")
-            .that.include("You have already confirmed your email");
-          done();
-        });
+      factory.user({ emailCheckValid: true }, function(validUser) {
+        chai
+          .request(server)
+          .get(
+            `/api/user/emailCheck?token=${validUser.emailCheck.token}&email=${
+              validUser.email
+            }`
+          )
+          .end(function(err, res) {
+            // expect(err).to.be.null;
+            // expect(res).to.be.json;
+            console.log(res.body);
+            res.should.have.status(206);
+            res.body.should.have
+              .property("message")
+              .that.include("You have already confirmed your email");
+            done();
+          });
+      });
+    });
+  });
+
+  describe("POST /api/user/log_in", function() {
+    it("It should return user infos and token", function(done) {
+      var password = "superpassword";
+      factory.user({ emailCheckValid: true, password: password }, function(
+        validUser
+      ) {
+        let request = {
+          email: validUser.email,
+          password: password
+        };
+        chai
+          .request(server)
+          .post(`/api/user/log_in`)
+          .send(request)
+          .end(function(err, res) {
+            // expect(err).to.be.null;
+            // expect(res).to.be.json;
+            res.should.have.status(200);
+            res.body.should.have
+              .property("message")
+              .that.include("Login successful");
+            res.body.should.have.property("user");
+            res.body.user.should.have.property("token");
+            done();
+          });
+      });
     });
   });
 });

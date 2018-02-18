@@ -101,10 +101,17 @@ router.post("/log_in", function(req, res, next) {
     if (!user) {
       return res.status(401).json({ error: "Unauthorized" });
     }
+    if (!user.emailCheck.valid) {
+      return res.status(206).json({ message: "Please confirm email first" });
+    }
+
     res.json({
-      _id: user._id,
-      token: user.token,
-      account: user.account
+      message: "Login successful",
+      user: {
+        _id: user._id,
+        token: user.token,
+        account: user.account
+      }
     });
   })(req, res, next);
 });
