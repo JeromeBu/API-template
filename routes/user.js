@@ -28,7 +28,9 @@ router.post("/sign_up", function(req, res) {
     req.body.password, // Le mot de passe doit être obligatoirement le deuxième paramètre transmis à `register` afin d'être crypté
     function(err, user) {
       if (err) {
-        console.error(err);
+        if (config.ENV !== "test") {
+          console.error(err);
+        }
         // TODO test
         res.status(400).json({ error: err.message });
       } else {
@@ -81,7 +83,6 @@ router.route("/emailCheck").get(function(req, res) {
     user.emailCheck.valid = true;
     user.save(function(err) {
       if (err) return res.send(err);
-      console.log("User email has been confirmed with succes");
       res.json({ message: "Your email has been verified with success" });
     });
   });

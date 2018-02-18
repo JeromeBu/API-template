@@ -88,7 +88,4 @@ app.listen(config.PORT, function() {
   );
 });
 
-// TODO test
-// console.log(`config.ENV = ${config.ENV}`);
-
 module.exports = app; // for testing
