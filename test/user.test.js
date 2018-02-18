@@ -4,6 +4,7 @@ var config = require("../config");
 var mongoose = require("mongoose");
 
 var User = require("../models/User");
+var factory = require("./modelFactory");
 
 let server = require("../server");
 var chai = require("chai");
@@ -84,25 +85,14 @@ describe("Users", () => {
 
   describe("GET /api/user/emailCheck", function() {
     it("It should confirm email", function(done) {
-      let emailToken = "GsRPTjbvwvswqnPqJCw7";
-      let validUser = new User({
-        email: "emailCheck@testing.com",
-        token: "hQOEFzqnIjWUWa0m7SGGHZ9SdLqX0000",
-        password: "mypassword",
-        emailCheck: {
-          valid: false,
-          token: emailToken,
-          createdAt: new Date()
-        },
-        account: {
-          name: "Testing emailCheck"
-        }
-      });
+      let validUser = factory.validUser();
       validUser.save();
       chai
         .request(server)
         .get(
-          `/api/user/emailCheck?token=${emailToken}&email=${validUser.email}`
+          `/api/user/emailCheck?token=${validUser.emailCheck.token}&email=${
+            validUser.email
+          }`
         )
         .end(function(err, res) {
           should.not.exist(err);
@@ -142,25 +132,15 @@ describe("Users", () => {
         });
     });
     it("respond respond already valid when called on already valid user", function(done) {
-      let emailToken = "GsRPTjbvwvswqnPqJCw7";
-      let validUser = new User({
-        email: "emailCheck@testing.com",
-        token: "hQOEFzqnIjWUWa0m7SGGHZ9SdLqX0000",
-        password: "mypassword",
-        emailCheck: {
-          valid: true,
-          token: emailToken,
-          createdAt: new Date()
-        },
-        account: {
-          name: "Testing emailCheck"
-        }
-      });
+      let validUser = factory.validUser();
+      validUser.emailCheck.valid = true;
       validUser.save();
       chai
         .request(server)
         .get(
-          `/api/user/emailCheck?token=${emailToken}&email=${validUser.email}`
+          `/api/user/emailCheck?token=${validUser.emailCheck.token}&email=${
+            validUser.email
+          }`
         )
         .end(function(err, res) {
           // expect(err).to.be.null;
