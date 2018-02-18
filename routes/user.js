@@ -1,3 +1,4 @@
+var config = require("../config");
 var express = require("express");
 var router = express.Router();
 var passport = require("passport");
@@ -32,11 +33,32 @@ router.post("/sign_up", function(req, res) {
         res.status(400).json({ error: err.message });
       } else {
         var url = req.headers.host;
-        mailgun.messages().send(confirmEmail(url, user), function(error, body) {
-          console.error("Mail Error", error);
-          console.log("Mail Body", body);
-          res.json({ _id: user._id, token: user.token, account: user.account });
-        });
+        // sending mails only in production ENV
+        if (config.ENV === "prod") {
+          mailgun
+            .messages()
+            .send(confirmEmail(url, user), function(error, body) {
+              console.error("Mail Error", error);
+              console.log("Mail Body", body);
+              res.json({
+                message: "User successfully signed up",
+                user: {
+                  _id: user._id,
+                  token: user.token,
+                  account: user.account
+                }
+              });
+            });
+        } else {
+          res.json({
+            message: "User successfully signed up",
+            user: {
+              _id: user._id,
+              token: user.token,
+              account: user.account
+            }
+          });
+        }
       }
     }
   );
@@ -49,15 +71,13 @@ router.route("/emailCheck").get(function(req, res) {
     if (err) return res.status(400).send(err);
     if (!user) return res.status(400).send("Invalid token");
     if (user.emailCheck.valid)
-      return res.send("You have already confirmed your email");
+      return res
+        .status(206)
+        .json({ message: "You have already confirmed your email" });
     var yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
     if (user.emailCheck.createdAt < yesterday)
       return res.status(400).send("This link is outdated (older than 24h)");
-
-    console.log("\n \n yesturday : ", yesterday);
-    console.log("user.emailCheck.createdAt : ", user.emailCheck.createdAt);
-    console.log("\n user: ", user, "\n \n");
     user.emailCheck.valid = true;
     user.save(function(err) {
       if (err) return res.send(err);

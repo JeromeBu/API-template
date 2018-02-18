@@ -82,9 +82,13 @@ app.listen(config.PORT, function() {
   console.log(
     `API running on port ${
       config.PORT
-    } | ${config.ENV.toUpperCase()} environement`
+    } | ${config.ENV.toUpperCase()} environement | MONGO_URI: ${
+      config.MONGODB_URI
+    } \n`
   );
 });
 
 // TODO test
 // console.log(`config.ENV = ${config.ENV}`);
+
+module.exports = app; // for testing

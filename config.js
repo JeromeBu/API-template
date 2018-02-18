@@ -17,7 +17,7 @@ switch (env) {
   case "test":
     config.PORT = parseInt(process.env.TEST_APP_PORT) || 3000;
     config.MONGODB_URI =
-      process.env.DEV_MONGODB_URI ||
+      process.env.TEST_MONGODB_URI ||
       "mongodb://localhost:27017/api-template-test";
     break;
 
