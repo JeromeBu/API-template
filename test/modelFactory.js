@@ -20,7 +20,6 @@ function user(options = {}, callback) {
     if (err) {
       console.error("Could not create user : " + err);
     } else {
-      console.log("user created with succes");
       callback(user);
     }
   });

@@ -142,7 +142,6 @@ describe("Users", () => {
           .end(function(err, res) {
             // expect(err).to.be.null;
             // expect(res).to.be.json;
-            console.log(res.body);
             res.should.have.status(206);
             res.body.should.have
               .property("message")
