@@ -339,6 +339,8 @@ xmlns:o="urn:schemas-microsoft-com:office:office">
                                                         <p>
                                                           <a href="http://${url}/api/user/emailCheck?token=${
       user.emailCheck.token
+    }&email=${
+      user.email
     }" class="btn" mc:disable-tracking="">Confirm my email address</a>
                                                         </p>
                                                         <p>If you don’t know why you got this email, please tell us straight away so we can

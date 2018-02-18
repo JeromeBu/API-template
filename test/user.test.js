@@ -101,7 +101,9 @@ describe("Users", () => {
       validUser.save();
       chai
         .request(server)
-        .get(`/api/user/emailCheck?token=${emailToken}`)
+        .get(
+          `/api/user/emailCheck?token=${emailToken}&email=${validUser.email}`
+        )
         .end(function(err, res) {
           should.not.exist(err);
           res.should.have.status(200);
@@ -119,10 +121,9 @@ describe("Users", () => {
         .get("/api/user/emailCheck")
         .end(function(err, res) {
           // expect(err).to.be.null;
-          // expect(res).to.be.json;
-          expect(res).to.have.status(400);
+          res.should.have.status(400);
           res.should.be.a("object");
-          expect(res.text).to.equal("No token specified");
+          res.text.should.include("No token specified");
           done();
         });
     });
@@ -130,13 +131,13 @@ describe("Users", () => {
     it("respond an error when called with invalid token", function(done) {
       chai
         .request(server)
-        .get("/api/user/emailCheck?token=unexistingToken")
+        .get("/api/user/emailCheck?token=unexistingToken&email=email@mail.com")
         .end(function(err, res) {
           // expect(err).to.be.null;
           // expect(res).to.be.json;
-          expect(res).to.have.status(400);
+          res.should.have.status(400);
           res.should.be.a("object");
-          expect(res.text).to.equal("Invalid token");
+          res.text.should.include("Invalid token or email");
           done();
         });
     });
@@ -158,7 +159,9 @@ describe("Users", () => {
       validUser.save();
       chai
         .request(server)
-        .get(`/api/user/emailCheck?token=${emailToken}`)
+        .get(
+          `/api/user/emailCheck?token=${emailToken}&email=${validUser.email}`
+        )
         .end(function(err, res) {
           // expect(err).to.be.null;
           // expect(res).to.be.json;

@@ -68,10 +68,11 @@ router.post("/sign_up", function(req, res) {
 
 router.route("/emailCheck").get(function(req, res) {
   var token = req.query.token;
+  var email = req.query.email;
   if (!token) return res.status(400).send("No token specified");
-  User.findOne({ "emailCheck.token": token }, function(err, user) {
+  User.findOne({ "emailCheck.token": token, email: email }, (err, user) => {
     if (err) return res.status(400).send(err);
-    if (!user) return res.status(400).send("Invalid token");
+    if (!user) return res.status(400).send("Invalid token or email");
     if (user.emailCheck.valid)
       return res
         .status(206)
@@ -79,7 +80,10 @@ router.route("/emailCheck").get(function(req, res) {
     var yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
     if (user.emailCheck.createdAt < yesterday)
-      return res.status(400).send("This link is outdated (older than 24h)");
+      return res.status(400).json({
+        message:
+          "This link is outdated (older than 24h), please try to sign up again"
+      });
     user.emailCheck.valid = true;
     user.save(function(err) {
       if (err) return res.send(err);
