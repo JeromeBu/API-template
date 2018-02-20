@@ -66,6 +66,30 @@ router.post("/sign_up", function(req, res) {
   );
 });
 
+router.post("/log_in", function(req, res, next) {
+  passport.authenticate("local", { session: false }, function(err, user, info) {
+    if (err) {
+      res.status(400);
+      return next(err.message);
+    }
+    if (!user) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+    if (!user.emailCheck.valid) {
+      return res.status(206).json({ message: "Please confirm email first" });
+    }
+
+    res.json({
+      message: "Login successful",
+      user: {
+        _id: user._id,
+        token: user.token,
+        account: user.account
+      }
+    });
+  })(req, res, next);
+});
+
 router.route("/emailCheck").get(function(req, res) {
   var token = req.query.token;
   var email = req.query.email;
@@ -92,28 +116,27 @@ router.route("/emailCheck").get(function(req, res) {
   });
 });
 
-router.post("/log_in", function(req, res, next) {
-  passport.authenticate("local", { session: false }, function(err, user, info) {
-    if (err) {
-      res.status(400);
-      return next(err.message);
+router.route("/forgotten_password").post(function(req, res) {
+  var email = req.body.email;
+  if (!email) return res.status(400).json({ error: "No email provided" });
+  User.findOne({ email: email }, function(err, user) {
+    if (err) return res.status(400).send(err);
+    if (!user)
+      return res.status(400).json({
+        error: "We don't have a user with this email in our dataBase"
+      });
+    if (!user.emailCheck.valid)
+      return res.status(400).json({ error: "Your email is not confirmed" });
+    if (config.ENV === "prod") {
+      mailgun.messages().send(confirmEmail(url, user), function(error, body) {
+        console.error("Mail Error", error);
+        console.log("Mail Body", body);
+      });
     }
-    if (!user) {
-      return res.status(401).json({ error: "Unauthorized" });
-    }
-    if (!user.emailCheck.valid) {
-      return res.status(206).json({ message: "Please confirm email first" });
-    }
-
     res.json({
-      message: "Login successful",
-      user: {
-        _id: user._id,
-        token: user.token,
-        account: user.account
-      }
+      message: "An email has been send with a link to change your password"
     });
-  })(req, res, next);
+  });
 });
 
 // L'authentification est obligatoire pour cette route

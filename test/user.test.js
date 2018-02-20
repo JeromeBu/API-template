@@ -247,6 +247,84 @@ describe("Users", () => {
       });
     });
   });
+  describe("POST /api/user/forgotten_password", function() {
+    it("It should send an email to redefine password", function(done) {
+      factory.user({ emailCheckValid: true }, function(validUser) {
+        let request = {
+          email: validUser.email
+        };
+        chai
+          .request(server)
+          .post(`/api/user/forgotten_password`)
+          .send(request)
+          .end(function(err, res) {
+            should.not.exist(err);
+            res.should.have.status(200);
+            res.should.be.a("object");
+            res.body.should.have
+              .property("message")
+              .that.include(
+                "An email has been send with a link to change your password"
+              );
+            done();
+          });
+      });
+    });
+    it("It should signal if unknowm email", function(done) {
+      let request = {
+        email: "wrong@mail.com"
+      };
+      chai
+        .request(server)
+        .post(`/api/user/forgotten_password`)
+        .send(request)
+        .end(function(err, res) {
+          // should.not.exist(err);
+          res.should.have.status(400);
+          res.should.be.a("object");
+          res.body.should.have
+            .property("error")
+            .that.include(
+              "We don't have a user with this email in our dataBase"
+            );
+          done();
+        });
+    });
+    it("It should signal if no email provided", function(done) {
+      let request = {};
+      chai
+        .request(server)
+        .post(`/api/user/forgotten_password`)
+        .send(request)
+        .end(function(err, res) {
+          res.should.have.status(400);
+          res.should.be.a("object");
+          res.body.should.have
+            .property("error")
+            .that.include("No email provided");
+          done();
+        });
+    });
+    it("It should signal if email is not confirmed", function(done) {
+      factory.user({ emailCheckValid: false }, function(validUser) {
+        let request = {
+          email: validUser.email
+        };
+        chai
+          .request(server)
+          .post(`/api/user/forgotten_password`)
+          .send(request)
+          .end(function(err, res) {
+            res.should.have.status(400);
+            res.should.be.a("object");
+            res.body.should.have
+              .property("error")
+              .that.include("Your email is not confirmed");
+            done();
+          });
+      });
+    });
+  });
 });
 
 // setTimeout(() => {
