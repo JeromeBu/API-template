@@ -22,7 +22,7 @@ describe("Users", () => {
   });
 
   describe("POST /api/user/sign_up", function() {
-    it("it should not POST a user without password field", done => {
+    it("It should not POST a user without password field", done => {
       let user = {
         name: "Name: No password given",
         email: "test@mail.com"
@@ -41,7 +41,7 @@ describe("Users", () => {
           done();
         });
     });
-    it("it should not POST a user without email field", done => {
+    it("It should not POST a user without email field", done => {
       let user = {
         name: "Name: No email given",
         password: "password"
@@ -55,12 +55,11 @@ describe("Users", () => {
           res.should.have.status(400);
           res.body.should.be.a("object");
           res.body.should.have.property("error");
-          res.body.error.should.include("No username was given");
-          // res.body.errors.password.should.have.property("kind").eql("required");
+          res.body.error.should.include("No username was given"); // TODO: change username with email
           done();
         });
     });
-    it("it should POST a user", done => {
+    it("It should POST a user", done => {
       let user = {
         email: "passing@mail.com",
         name: "Name: schould pass",
@@ -81,6 +80,103 @@ describe("Users", () => {
           res.body.user.should.have.property("account");
           done();
         });
+    });
+  });
+
+  describe("POST /api/user/log_in", function() {
+    it("It should return user infos and token", function(done) {
+      var password = "superpassword";
+      factory.user({ emailCheckValid: true, password: password }, function(
+        validUser
+      ) {
+        let request = {
+          email: validUser.email,
+          password: password
+        };
+        chai
+          .request(server)
+          .post(`/api/user/log_in`)
+          .send(request)
+          .end(function(err, res) {
+            // expect(err).to.be.null;
+            // expect(res).to.be.json;
+            res.should.have.status(200);
+            res.body.should.have
+              .property("message")
+              .that.include("Login successful");
+            res.body.should.have.property("user");
+            res.body.user.should.have.property("token");
+            done();
+          });
+      });
+    });
+    it("It should return Unauthorized when wrong password", function(done) {
+      var password = "superpassword";
+      factory.user({ emailCheckValid: true, password: password }, function(
+        validUser
+      ) {
+        let request = {
+          email: validUser.email,
+          password: "wrongpassword"
+        };
+        chai
+          .request(server)
+          .post(`/api/user/log_in`)
+          .send(request)
+          .end(function(err, res) {
+            // expect(err).to.be.null;
+            // expect(res).to.be.json;
+            res.should.have.status(401);
+            res.body.should.have.property("error").that.include("Unauthorized");
+            done();
+          });
+      });
+    });
+    it("It should return Unauthorized no user find with email", function(done) {
+      var password = "superpassword";
+      factory.user({ emailCheckValid: true, password: password }, function(
+        validUser
+      ) {
+        let request = {
+          email: "wrong@mail.com",
+          password: "superpassword"
+        };
+        chai
+          .request(server)
+          .post(`/api/user/log_in`)
+          .send(request)
+          .end(function(err, res) {
+            // expect(err).to.be.null;
+            // expect(res).to.be.json;
+            res.should.have.status(401);
+            res.body.should.have.property("error").that.include("Unauthorized");
+            done();
+          });
+      });
+    });
+    it("It should ask to confirm email if not validated", function(done) {
+      var password = "superpassword";
+      factory.user({ emailCheckValid: false, password: password }, function(
+        validUser
+      ) {
+        let request = {
+          email: validUser.email,
+          password: password
+        };
+        chai
+          .request(server)
+          .post(`/api/user/log_in`)
+          .send(request)
+          .end(function(err, res) {
+            // expect(err).to.be.null;
+            // expect(res).to.be.json;
+            res.should.have.status(206);
+            res.body.should.have
+              .property("message")
+              .that.include("confirm email");
+            done();
+          });
+      });
     });
   });
 
@@ -146,35 +242,6 @@ describe("Users", () => {
             res.body.should.have
               .property("message")
               .that.include("You have already confirmed your email");
-            done();
-          });
-      });
-    });
-  });
-
-  describe("POST /api/user/log_in", function() {
-    it("It should return user infos and token", function(done) {
-      var password = "superpassword";
-      factory.user({ emailCheckValid: true, password: password }, function(
-        validUser
-      ) {
-        let request = {
-          email: validUser.email,
-          password: password
-        };
-        chai
-          .request(server)
-          .post(`/api/user/log_in`)
-          .send(request)
-          .end(function(err, res) {
-            // expect(err).to.be.null;
-            // expect(res).to.be.json;
-            res.should.have.status(200);
-            res.body.should.have
-              .property("message")
-              .that.include("Login successful");
-            res.body.should.have.property("user");
-            res.body.user.should.have.property("token");
             done();
           });
       });
