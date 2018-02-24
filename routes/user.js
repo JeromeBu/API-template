@@ -139,6 +139,8 @@ router.route("/forgotten_password").post(function(req, res) {
   });
 });
 
+router.route("/new_password").post(function(req, res) {});
+
 // L'authentification est obligatoire pour cette route
 router.get("/:id", function(req, res, next) {
   passport.authenticate("bearer", { session: false }, function(

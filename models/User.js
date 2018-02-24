@@ -9,6 +9,11 @@ var UserSchema = new mongoose.Schema({
     token: String,
     createdAt: Date
   },
+  changePassword: {
+    valid: { type: Boolean, default: false },
+    token: String,
+    createdAt: Date
+  },
   password: String,
   token: String, // Le token permettra d'authentifier l'utilisateur à l'aide du package `passport-http-bearer`
 

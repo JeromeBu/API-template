@@ -158,10 +158,10 @@ describe("Users", () => {
     it("Asks to confirm email if not validated", function(done) {
       var password = "superpassword";
       factory.user({ emailCheckValid: false, password: password }, function(
-        validUser
+        user
       ) {
         let request = {
-          email: validUser.email,
+          email: user.email,
           password: password
         };
         chai
@@ -183,12 +183,12 @@ describe("Users", () => {
 
   describe("GET /api/user/emailCheck", function() {
     it("Confirms email", function(done) {
-      factory.user({ emailCheckValid: false }, function(validUser) {
+      factory.user({ emailCheckValid: false }, function(user) {
         chai
           .request(server)
           .get(
-            `/api/user/emailCheck?token=${validUser.emailCheck.token}&email=${
-              validUser.email
+            `/api/user/emailCheck?token=${user.emailCheck.token}&email=${
+              user.email
             }`
           )
           .end(function(err, res) {
@@ -249,6 +249,7 @@ describe("Users", () => {
       });
     });
   });
+
   describe("POST /api/user/forgotten_password", function() {
     it("Sends an email to redefine password", function(done) {
       factory.user({ emailCheckValid: true }, function(validUser) {
@@ -308,9 +309,9 @@ describe("Users", () => {
         });
     });
     it("Returns a message if email is not confirmed", function(done) {
-      factory.user({ emailCheckValid: false }, function(validUser) {
+      factory.user({ emailCheckValid: false }, function(user) {
         let request = {
-          email: validUser.email
+          email: user.email
         };
         chai
           .request(server)
@@ -324,6 +325,66 @@ describe("Users", () => {
               .that.include("Your email is not confirmed");
             done();
           });
+      });
+    });
+
+    // describe("GET /api/user/new_password", function() {
+    //   it("Sends an email to redefine password", function(done) {
+    //     factory.user({ emailCheckValid: true }, function(validUser) {
+    //       let request = {
+    //         email: validUser.email
+    //       };
+    //       chai
+    //         .request(server)
+    //         .post(`/api/user/forgotten_password`)
+    //         .send(request)
+    //         .end(function(err, res) {
+    //           should.not.exist(err);
+    //           res.should.have.status(200);
+    //           res.should.be.a("object");
+    //           res.body.should.have
+    //             .property("message")
+    //             .that.include(
+    //               "An email has been send with a link to change your password"
+    //             );
+    //           done();
+    //         });
+    //     });
+    //   });
+    // });
+    describe("POST /api/user/new_password", function() {
+      it("Changes the password", function(done) {
+        const initialPassword = "old_password";
+        factory.user(
+          {
+            emailCheckValid: true,
+            password: initialPassword,
+            changePasswordValid: true
+          },
+          function(validUser) {
+            const request = {
+              newPassword: "new_password",
+              confirmPassword: "new_password"
+            };
+            chai
+              .request(server)
+              .post(
+                `/api/user/forgotten_password?token=${
+                  validUser.changePassword.token
+                }&email=${validUser.email}`
+              )
+              .send(request)
+              .end(function(err, res) {
+                should.not.exist(err);
+                res.should.have.status(200);
+                res.should.be.a("object");
+                res.body.should.have
+                  .property("message")
+                  .that.include("Password updated with success");
+                done();
+              });
+          }
+        );
       });
     });
   });
