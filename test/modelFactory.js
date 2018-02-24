@@ -1,13 +1,13 @@
 var uid = require("uid2");
 var User = require("../models/User");
 //  options: email, token, password, emailCheckValid, emailCheckToken, emailCheckCreatedAt, name, description
-function user(options = {}, callback) {
+function user(options, callback) {
   var password = options.password || "password";
   var newUser = new User({
     email: options.email || "emailCheck@testing.com",
     token: options.token || uid(32),
     emailCheck: {
-      valid: options.emailCheckValid || true,
+      valid: options.emailCheckValid === false ? false : true,
       token: options.emailCheckToken || uid(20),
       createdAt: options.emailCheckCreatedAt || new Date()
     },

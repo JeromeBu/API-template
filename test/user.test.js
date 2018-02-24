@@ -1,19 +1,9 @@
 require("dotenv").config();
-// var config = require("../config");
 
 let server = require("../server");
-// var mongoose = require("mongoose");
-// mongoose.connect(config.MONGODB_URI, function(err) {
-//   if (err) console.error("Could not connect to mongodb.");
-// });
 
 var User = require("../models/User");
 var factory = require("./modelFactory");
-// if (config.ENV === "test") {
-//   server = require("../server");
-// } else {
-//   server = "http://localhost:" + config.PORT;
-// }
 
 var chai = require("chai");
 var expect = require("chai").expect;
@@ -24,7 +14,7 @@ chai.use(chaiHttp);
 describe("Users", () => {
   after(function() {
     server.close();
-    server.mongoseDisconnect();
+    server.mongooseDisconnect(); // Needed in order to stop mocha from running
   });
   beforeEach(done => {
     User.remove({}, err => {
@@ -33,7 +23,7 @@ describe("Users", () => {
   });
 
   describe("POST /api/user/sign_up", function() {
-    it("It should not POST a user without password field", done => {
+    it("Not POST a user without password field", done => {
       let user = {
         name: "Name: No password given",
         email: "test@mail.com"
@@ -52,7 +42,7 @@ describe("Users", () => {
           done();
         });
     });
-    it("It should not POST a user without email field", done => {
+    it("Not POST a user without email field", done => {
       let user = {
         name: "Name: No email given",
         password: "password"
@@ -70,7 +60,7 @@ describe("Users", () => {
           done();
         });
     });
-    it("It should POST a user", done => {
+    it("POST a user", done => {
       let user = {
         email: "passing@mail.com",
         name: "Name: schould pass",
@@ -95,7 +85,7 @@ describe("Users", () => {
   });
 
   describe("POST /api/user/log_in", function() {
-    it("It should return user infos and token", function(done) {
+    it("Returns user infos and token", function(done) {
       var password = "superpassword";
       factory.user({ emailCheckValid: true, password: password }, function(
         validUser
@@ -121,7 +111,7 @@ describe("Users", () => {
           });
       });
     });
-    it("It should return Unauthorized when wrong password", function(done) {
+    it("Returns Unauthorized when wrong password", function(done) {
       var password = "superpassword";
       factory.user({ emailCheckValid: true, password: password }, function(
         validUser
@@ -143,7 +133,7 @@ describe("Users", () => {
           });
       });
     });
-    it("It should return Unauthorized no user find with email", function(done) {
+    it("Returns Unauthorized when no user find with email", function(done) {
       var password = "superpassword";
       factory.user({ emailCheckValid: true, password: password }, function(
         validUser
@@ -165,7 +155,7 @@ describe("Users", () => {
           });
       });
     });
-    it("It should ask to confirm email if not validated", function(done) {
+    it("Asks to confirm email if not validated", function(done) {
       var password = "superpassword";
       factory.user({ emailCheckValid: false, password: password }, function(
         validUser
@@ -192,7 +182,7 @@ describe("Users", () => {
   });
 
   describe("GET /api/user/emailCheck", function() {
-    it("It should confirm email", function(done) {
+    it("Confirms email", function(done) {
       factory.user({ emailCheckValid: false }, function(validUser) {
         chai
           .request(server)
@@ -212,7 +202,7 @@ describe("Users", () => {
           });
       });
     });
-    it("respond an error when called without token", function(done) {
+    it("Responds an error when called without token", function(done) {
       chai
         .request(server)
         .get("/api/user/emailCheck")
@@ -224,7 +214,7 @@ describe("Users", () => {
           done();
         });
     });
-    it("respond an error when called with invalid token", function(done) {
+    it("Responds an error when called with invalid token", function(done) {
       chai
         .request(server)
         .get("/api/user/emailCheck?token=unexistingToken&email=email@mail.com")
@@ -237,7 +227,7 @@ describe("Users", () => {
           done();
         });
     });
-    it("respond respond already valid when called on already valid user", function(done) {
+    it("Responds already valid when called on already valid user", function(done) {
       factory.user({ emailCheckValid: true }, function(validUser) {
         chai
           .request(server)
@@ -250,6 +240,7 @@ describe("Users", () => {
             // expect(err).to.be.null;
             // expect(res).to.be.json;
             res.should.have.status(206);
+            res.should.be.a("object");
             res.body.should.have
               .property("message")
               .that.include("You have already confirmed your email");
@@ -259,7 +250,7 @@ describe("Users", () => {
     });
   });
   describe("POST /api/user/forgotten_password", function() {
-    it("It should send an email to redefine password", function(done) {
+    it("Sends an email to redefine password", function(done) {
       factory.user({ emailCheckValid: true }, function(validUser) {
         let request = {
           email: validUser.email
@@ -281,7 +272,7 @@ describe("Users", () => {
           });
       });
     });
-    it("It should signal if unknowm email", function(done) {
+    it("Returns a message if unknowm email", function(done) {
       let request = {
         email: "wrong@mail.com"
       };
@@ -301,7 +292,7 @@ describe("Users", () => {
           done();
         });
     });
-    it("It should signal if no email provided", function(done) {
+    it("Returns a message if no email provided", function(done) {
       let request = {};
       chai
         .request(server)
@@ -316,7 +307,7 @@ describe("Users", () => {
           done();
         });
     });
-    it("It should signal if email is not confirmed", function(done) {
+    it("Returns a message if email is not confirmed", function(done) {
       factory.user({ emailCheckValid: false }, function(validUser) {
         let request = {
           email: validUser.email

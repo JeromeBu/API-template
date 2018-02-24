@@ -87,9 +87,9 @@ const server = app.listen(config.PORT, function() {
   );
 });
 
-function mongoseDisconnect() {
+function mongooseDisconnect() {
   mongoose.connection.close();
 }
 
 module.exports = server; // for testing
-module.exports.mongoseDisconnect = mongoseDisconnect;
+module.exports.mongooseDisconnect = mongooseDisconnect;
