@@ -1,7 +1,6 @@
 var config = require("./config");
 
 var mongoose = require("mongoose");
-
 mongoose.connect(config.MONGODB_URI, function(err) {
   if (err) console.error("Could not connect to mongodb.");
 });
@@ -78,7 +77,7 @@ app.use(function(err, req, res, next) {
   res.json({ error: err });
 });
 
-app.listen(config.PORT, function() {
+const server = app.listen(config.PORT, function() {
   console.log(
     `API running on port ${
       config.PORT
@@ -88,4 +87,9 @@ app.listen(config.PORT, function() {
   );
 });
 
-module.exports = app; // for testing
+function mongoseDisconnect() {
+  mongoose.connection.close();
+}
+
+module.exports = server; // for testing
+module.exports.mongoseDisconnect = mongoseDisconnect;

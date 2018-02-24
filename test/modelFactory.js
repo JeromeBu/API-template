@@ -7,7 +7,7 @@ function user(options = {}, callback) {
     email: options.email || "emailCheck@testing.com",
     token: options.token || uid(32),
     emailCheck: {
-      valid: options.emailCheckValid || false,
+      valid: options.emailCheckValid || true,
       token: options.emailCheckToken || uid(20),
       createdAt: options.emailCheckCreatedAt || new Date()
     },

@@ -1,20 +1,31 @@
 require("dotenv").config();
-var config = require("../config");
+// var config = require("../config");
 
-var mongoose = require("mongoose");
+let server = require("../server");
+// var mongoose = require("mongoose");
+// mongoose.connect(config.MONGODB_URI, function(err) {
+//   if (err) console.error("Could not connect to mongodb.");
+// });
 
 var User = require("../models/User");
 var factory = require("./modelFactory");
+// if (config.ENV === "test") {
+//   server = require("../server");
+// } else {
+//   server = "http://localhost:" + config.PORT;
+// }
 
-let server = require("../server");
 var chai = require("chai");
 var expect = require("chai").expect;
 var should = require("chai").should();
 var chaiHttp = require("chai-http");
 chai.use(chaiHttp);
 
-// const url = "http://localhost:" + config.PORT;
 describe("Users", () => {
+  after(function() {
+    server.close();
+    server.mongoseDisconnect();
+  });
   beforeEach(done => {
     User.remove({}, err => {
       done();
@@ -182,7 +193,7 @@ describe("Users", () => {
 
   describe("GET /api/user/emailCheck", function() {
     it("It should confirm email", function(done) {
-      factory.user({}, function(validUser) {
+      factory.user({ emailCheckValid: false }, function(validUser) {
         chai
           .request(server)
           .get(
@@ -326,8 +337,3 @@ describe("Users", () => {
     });
   });
 });
-
-// setTimeout(() => {
-//   console.log("disconnectiong DB");
-//   mongoose.connection.close();
-// }, 5000);

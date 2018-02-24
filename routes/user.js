@@ -36,7 +36,7 @@ router.post("/sign_up", function(req, res) {
       } else {
         var url = req.headers.host;
         // sending mails only in production ENV
-        if (config.ENV === "prod") {
+        if (config.ENV === "production") {
           mailgun
             .messages()
             .send(confirmEmail(url, user), function(error, body) {
@@ -127,7 +127,7 @@ router.route("/forgotten_password").post(function(req, res) {
       });
     if (!user.emailCheck.valid)
       return res.status(400).json({ error: "Your email is not confirmed" });
-    if (config.ENV === "prod") {
+    if (config.ENV === "production") {
       mailgun.messages().send(confirmEmail(url, user), function(error, body) {
         console.error("Mail Error", error);
         console.log("Mail Body", body);
