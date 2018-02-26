@@ -9,7 +9,7 @@ var UserSchema = new mongoose.Schema({
     token: String,
     createdAt: Date
   },
-  changePassword: {
+  passwordChange: {
     valid: { type: Boolean, default: false },
     token: String,
     createdAt: Date

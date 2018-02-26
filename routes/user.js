@@ -128,11 +128,18 @@ router.route("/forgotten_password").post(function(req, res) {
     if (!user.emailCheck.valid)
       return res.status(400).json({ error: "Your email is not confirmed" });
     if (config.ENV === "production") {
-      mailgun.messages().send(confirmEmail(url, user), function(error, body) {
-        console.error("Mail Error", error);
-        console.log("Mail Body", body);
-      });
+      mailgun
+        .messages()
+        .send(forgetPasswordEmail(url, user), function(error, body) {
+          console.error("Mail Error", error);
+          console.log("Mail Body", body);
+        });
     }
+    user.changePassword = {
+      token: uid2(20),
+      createdAt: new Date(),
+      valid: true
+    };
     res.json({
       message: "An email has been send with a link to change your password"
     });

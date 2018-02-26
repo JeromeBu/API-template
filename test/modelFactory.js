@@ -11,10 +11,10 @@ function user(options, callback) {
       token: options.emailCheckToken || uid(20),
       createdAt: options.emailCheckCreatedAt || new Date()
     },
-    changePassword: {
-      valid: options.changePasswordValid || false,
-      token: options.changePasswordToken || uid(20),
-      createdAt: options.changePasswordCreatedAt || new Date()
+    passwordChange: {
+      valid: options.passwordChangeValid || false,
+      token: options.passwordChangeToken || uid(20),
+      createdAt: options.passwordChangeCreatedAt || new Date()
     },
     account: {
       name: options.name || "Testing emailCheck",
