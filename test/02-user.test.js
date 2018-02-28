@@ -1,9 +1,7 @@
-require("dotenv").config();
-
 let server = require("../server");
 
 var User = require("../models/User");
-var factory = require("./modelFactory");
+var factory = require("./00-modelFactory");
 
 var chai = require("chai");
 var expect = require("chai").expect;
@@ -14,7 +12,6 @@ chai.use(chaiHttp);
 describe("Users", () => {
   after(function() {
     server.close();
-    server.mongooseDisconnect(); // Needed in order to stop mocha from running
   });
   beforeEach(done => {
     User.remove({}, err => {
@@ -58,6 +55,33 @@ describe("Users", () => {
           res.body.should.have.property("error");
           res.body.error.should.include("No username was given"); // TODO: change username with email
           done();
+        });
+    });
+    it("Not POST a user if email is already taken", done => {
+      factory
+        .user({
+          email: "alreadyTaken@mail.com",
+          emailCheckValid: true
+        })
+        .then(function(validUser) {
+          let newUser = {
+            email: validUser.email,
+            password: "password"
+          };
+          chai
+            .request(server)
+            .post("/api/user/sign_up")
+            .send(newUser)
+            .end((err, res) => {
+              // should.not.exist(err);
+              res.should.have.status(400);
+              res.body.should.be.a("object");
+              res.body.should.have.property("error");
+              res.body.error.should.include(
+                "given username is already registered"
+              );
+              done();
+            });
         });
     });
     it("POST a user", done => {
@@ -246,145 +270,6 @@ describe("Users", () => {
               .that.include("You have already confirmed your email");
             done();
           });
-      });
-    });
-  });
-
-  describe("POST /api/user/forgotten_password", function() {
-    it("Sends an email to redefine password", function(done) {
-      factory.user({ emailCheckValid: true }, function(validUser) {
-        let request = {
-          email: validUser.email
-        };
-        chai
-          .request(server)
-          .post(`/api/user/forgotten_password`)
-          .send(request)
-          .end(function(err, res) {
-            should.not.exist(err);
-            res.should.have.status(200);
-            res.should.be.a("object");
-            res.body.should.have
-              .property("message")
-              .that.include(
-                "An email has been send with a link to change your password"
-              );
-            done();
-          });
-      });
-    });
-    it("Returns a message if unknowm email", function(done) {
-      let request = {
-        email: "wrong@mail.com"
-      };
-      chai
-        .request(server)
-        .post(`/api/user/forgotten_password`)
-        .send(request)
-        .end(function(err, res) {
-          // should.not.exist(err);
-          res.should.have.status(400);
-          res.should.be.a("object");
-          res.body.should.have
-            .property("error")
-            .that.include(
-              "We don't have a user with this email in our dataBase"
-            );
-          done();
-        });
-    });
-    it("Returns a message if no email provided", function(done) {
-      let request = {};
-      chai
-        .request(server)
-        .post(`/api/user/forgotten_password`)
-        .send(request)
-        .end(function(err, res) {
-          res.should.have.status(400);
-          res.should.be.a("object");
-          res.body.should.have
-            .property("error")
-            .that.include("No email provided");
-          done();
-        });
-    });
-    it("Returns a message if email is not confirmed", function(done) {
-      factory.user({ emailCheckValid: false }, function(user) {
-        let request = {
-          email: user.email
-        };
-        chai
-          .request(server)
-          .post(`/api/user/forgotten_password`)
-          .send(request)
-          .end(function(err, res) {
-            res.should.have.status(400);
-            res.should.be.a("object");
-            res.body.should.have
-              .property("error")
-              .that.include("Your email is not confirmed");
-            done();
-          });
-      });
-    });
-
-    // describe("GET /api/user/new_password", function() {
-    //   it("Sends an email to redefine password", function(done) {
-    //     factory.user({ emailCheckValid: true }, function(validUser) {
-    //       let request = {
-    //         email: validUser.email
-    //       };
-    //       chai
-    //         .request(server)
-    //         .post(`/api/user/forgotten_password`)
-    //         .send(request)
-    //         .end(function(err, res) {
-    //           should.not.exist(err);
-    //           res.should.have.status(200);
-    //           res.should.be.a("object");
-    //           res.body.should.have
-    //             .property("message")
-    //             .that.include(
-    //               "An email has been send with a link to change your password"
-    //             );
-    //           done();
-    //         });
-    //     });
-    //   });
-    // });
-    describe("POST /api/user/new_password", function() {
-      it("Changes the password", function(done) {
-        const initialPassword = "old_password";
-        factory.user(
-          {
-            emailCheckValid: true,
-            password: initialPassword,
-            changePasswordValid: true
-          },
-          function(validUser) {
-            const request = {
-              newPassword: "new_password",
-              confirmPassword: "new_password"
-            };
-            chai
-              .request(server)
-              .post(
-                `/api/user/forgotten_password?token=${
-                  validUser.changePassword.token
-                }&email=${validUser.email}`
-              )
-              .send(request)
-              .end(function(err, res) {
-                should.not.exist(err);
-                res.should.have.status(200);
-                res.should.be.a("object");
-                res.body.should.have
-                  .property("message")
-                  .that.include("Password updated with success");
-                done();
-              });
-          }
-        );
       });
     });
   });

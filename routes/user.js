@@ -146,7 +146,17 @@ router.route("/forgotten_password").post(function(req, res) {
   });
 });
 
-router.route("/new_password").post(function(req, res) {});
+router
+  .route("/reset_password")
+  .get(function(req, res) {
+    const { email, sentToken } = req.query;
+    console.log("email", email);
+    console.log("sentToken", sentToken);
+    res.send("Get route for reset passord");
+  })
+  .post(function(req, res) {
+    res.send("Post route for reset password");
+  });
 
 // L'authentification est obligatoire pour cette route
 router.get("/:id", function(req, res, next) {
