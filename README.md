@@ -9,3 +9,18 @@ npm start <!-- start production server -->
 npm run dev <!-- start dev server (with nodemon)-->
 
 npm run test <!-- run test (need to have server started) -->
+
+A mailgun API and domain is needed to use mail (for signup and password recovery)
+It should be in .env :
+MAILGUN_API_KEY = "your api key"
+MAILGUN_DOMAIN = "your domain"
+
+You can also choose your port and mongoDB uri with the env variables:
+DEV_APP_PORT
+DEV_MONGODB_URI
+
+TEST_APP_PORT
+TEST_MONGODB_URI
+
+in production :
+PROD_MONGODB_URI

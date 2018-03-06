@@ -205,13 +205,13 @@ describe("Users", () => {
     });
   });
 
-  describe("GET /api/user/emailCheck", function() {
+  describe("GET /api/user/email_check", function() {
     it("Confirms email", function(done) {
       factory.user({ emailCheckValid: false }, function(user) {
         chai
           .request(server)
           .get(
-            `/api/user/emailCheck?token=${user.emailCheck.token}&email=${
+            `/api/user/email_check?token=${user.emailCheck.token}&email=${
               user.email
             }`
           )
@@ -229,7 +229,7 @@ describe("Users", () => {
     it("Responds an error when called without token", function(done) {
       chai
         .request(server)
-        .get("/api/user/emailCheck")
+        .get("/api/user/email_check")
         .end(function(err, res) {
           // expect(err).to.be.null;
           res.should.have.status(400);
@@ -241,13 +241,13 @@ describe("Users", () => {
     it("Responds an error when called with invalid token", function(done) {
       chai
         .request(server)
-        .get("/api/user/emailCheck?token=unexistingToken&email=email@mail.com")
+        .get("/api/user/email_check?token=unexistingToken&email=email@mail.com")
         .end(function(err, res) {
           // expect(err).to.be.null;
           // expect(res).to.be.json;
           res.should.have.status(400);
           res.should.be.a("object");
-          res.text.should.include("Invalid token or email");
+          res.text.should.include("Wrong credentials");
           done();
         });
     });
@@ -256,7 +256,7 @@ describe("Users", () => {
         chai
           .request(server)
           .get(
-            `/api/user/emailCheck?token=${validUser.emailCheck.token}&email=${
+            `/api/user/email_check?token=${validUser.emailCheck.token}&email=${
               validUser.email
             }`
           )

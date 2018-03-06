@@ -15,14 +15,14 @@ switch (env) {
     break;
 
   case "test":
-    config.PORT = parseInt(process.env.TEST_APP_PORT) || 3000;
+    config.PORT = parseInt(process.env.TEST_APP_PORT) || 3001;
     config.MONGODB_URI =
       process.env.TEST_MONGODB_URI ||
       "mongodb://localhost:27017/api-template-test";
     break;
 
   case "production":
-    config.PORT = parseInt(process.env.PROD_APP_PORT) || 3000;
+    config.PORT = parseInt(process.env.PORT);
     config.MONGODB_URI = process.env.PROD_MONGODB_URI;
     break;
 

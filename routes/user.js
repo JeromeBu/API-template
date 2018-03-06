@@ -8,6 +8,7 @@ var mailgun = require("mailgun-js")({
   domain: process.env.MAILGUN_DOMAIN
 });
 var confirmEmail = require("../emails/confirmationEmail");
+var forgetPasswordEmail = require("../emails/forgetPasswordEmail");
 
 var User = require("../models/User.js");
 
@@ -34,9 +35,9 @@ router.post("/sign_up", function(req, res) {
         // TODO test
         res.status(400).json({ error: err.message });
       } else {
-        var url = req.headers.host;
         // sending mails only in production ENV
         if (config.ENV === "production") {
+          const url = req.headers.host;
           mailgun
             .messages()
             .send(confirmEmail(url, user), function(error, body) {
@@ -72,13 +73,9 @@ router.post("/log_in", function(req, res, next) {
       res.status(400);
       return next(err.message);
     }
-    if (!user) {
-      return res.status(401).json({ error: "Unauthorized" });
-    }
-    if (!user.emailCheck.valid) {
+    if (!user) return res.status(401).json({ error: "Unauthorized" });
+    if (!user.emailCheck.valid)
       return res.status(206).json({ message: "Please confirm email first" });
-    }
-
     res.json({
       message: "Login successful",
       user: {
@@ -90,13 +87,27 @@ router.post("/log_in", function(req, res, next) {
   })(req, res, next);
 });
 
-router.route("/emailCheck").get(function(req, res) {
-  var token = req.query.token;
-  var email = req.query.email;
+// function findUserWithEmailAndToken(req, res, query = {}) {
+//   return Promise((resolve, reject) => {
+//     const token = req.query.token;
+//     const email = req.query.email;
+//     if (!email) return res.status(400).json({ error: "No email specified" });
+//     if (!token) return res.status(400).json({ error: "No token specified" });
+//     if (!query) return res.status(500).send("Need a query to find user");
+//     User.findOne(query, (err, user) => {
+//       if (err) reject(err);
+//       if (!user) return res.status(400).send("Wrong credentials");
+//       resolve(user);
+//     });
+//   });
+// }
+
+router.route("/email_check").get(function(req, res) {
+  const { email, token } = req.query;
   if (!token) return res.status(400).send("No token specified");
   User.findOne({ "emailCheck.token": token, email: email }, (err, user) => {
     if (err) return res.status(400).send(err);
-    if (!user) return res.status(400).send("Invalid token or email");
+    if (!user) return res.status(400).send("Wrong credentials");
     if (user.emailCheck.valid)
       return res
         .status(206)
@@ -118,7 +129,7 @@ router.route("/emailCheck").get(function(req, res) {
 
 router.route("/forgotten_password").post(function(req, res) {
   var email = req.body.email;
-  if (!email) return res.status(400).json({ error: "No email provided" });
+  if (!email) return res.status(400).json({ error: "No email specified" });
   User.findOne({ email: email }, function(err, user) {
     if (err) return res.status(400).send(err);
     if (!user)
@@ -127,21 +138,33 @@ router.route("/forgotten_password").post(function(req, res) {
       });
     if (!user.emailCheck.valid)
       return res.status(400).json({ error: "Your email is not confirmed" });
-    if (config.ENV === "production") {
-      mailgun
-        .messages()
-        .send(forgetPasswordEmail(url, user), function(error, body) {
-          console.error("Mail Error", error);
-          console.log("Mail Body", body);
-        });
-    }
-    user.changePassword = {
+    user.passwordChange = {
       token: uid2(20),
       createdAt: new Date(),
       valid: true
     };
-    res.json({
-      message: "An email has been send with a link to change your password"
+    user.save(function(error) {
+      if (error) {
+        console.log(
+          "Error when saving user with passwordChange infos : ",
+          error
+        );
+        return res
+          .status(400)
+          .json({ error: "Error when setting recovering infos in user " });
+      }
+      if (config.ENV === "production") {
+        const url = req.headers.host;
+        mailgun
+          .messages()
+          .send(forgetPasswordEmail(url, user), function(error, body) {
+            console.error("Mail Error", error);
+            console.log("Mail Body", body);
+          });
+      }
+      res.json({
+        message: "An email has been send with a link to change your password"
+      });
     });
   });
 });
@@ -149,13 +172,34 @@ router.route("/forgotten_password").post(function(req, res) {
 router
   .route("/reset_password")
   .get(function(req, res) {
-    const { email, sentToken } = req.query;
-    console.log("email", email);
-    console.log("sentToken", sentToken);
-    res.send("Get route for reset passord");
+    const { email, token } = req.query;
+    if (!email) return res.status(401).json({ error: "No email specified" });
+    if (!token) return res.status(401).json({ error: "No token specified" });
+    User.findOne({ email: email, "passwordChange.token": token }, function(
+      err,
+      user
+    ) {
+      if (err) return res.status(400).send(err);
+      if (!user) return res.status(401).json({ error: "Wrong credentials" });
+      let twoHoursAgo = new Date();
+      twoHoursAgo.setHours(twoHoursAgo.getHours() - 2);
+      if (user.passwordChange.createdAt < twoHoursAgo)
+        return res.status(401).json({
+          error: "Outdated link",
+          message: "This link is outdated (older than 2h)"
+        });
+      if (!user.emailCheck.valid)
+        return res.status(401).json({
+          error: "Email not confirmed",
+          message: "Please,validate your email first"
+        });
+      res.json({ message: "Ready to recieve new password" });
+    });
+    // console.log("email", email);
+    // console.log("sentToken", sentToken);
   })
   .post(function(req, res) {
-    res.send("Post route for reset password");
+    res.send("TODO: Post route for reset password");
   });
 
 // L'authentification est obligatoire pour cette route

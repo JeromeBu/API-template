@@ -248,9 +248,7 @@ xmlns:o="urn:schemas-microsoft-com:office:office">
                                                         <tbody>
                                                           <tr>
                                                             <td style="width:150px;">
-                                                              <img alt="Logo" title="" height="auto" src="https://d2yjfm58htokf8.cloudfront.net/static/images/tw_logo-v2.png"
-                                                              style="border:none;border-radius:0px;display:block;font-size:13px;outline:none;text-decoration:none;width:100%;height:auto;"
-                                                              width="150">
+                                                              Logo
                                                             </td>
                                                           </tr>
                                                         </tbody>
@@ -337,7 +335,7 @@ xmlns:o="urn:schemas-microsoft-com:office:office">
                                                         <p>Click on the button below to create a new password</p>
                                                         <p>
                                                           <a href="http://${url}/api/user/forgotten_password?token=${
-      user.changePassword.token
+      user.passwordChange.token
     }&email=${
       user.email
     }" class="btn" mc:disable-tracking="">Set a new password</a>
@@ -384,4 +382,4 @@ xmlns:o="urn:schemas-microsoft-com:office:office">
   };
 }
 
-module.exports = forgetPassword;
+module.exports = forgetPasswordEmail;
