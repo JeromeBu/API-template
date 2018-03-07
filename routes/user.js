@@ -1,7 +1,7 @@
 const config = require("../config");
 const express = require("express");
 const router = express.Router();
-const { handleResetPasswordErrors } = require("./userMiddleware");
+const { handleResetPasswordErrors } = require("../middlewares/user");
 const user_controller = require("../controllers/userController");
 
 router.post("/sign_up", user_controller.sign_up);

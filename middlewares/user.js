@@ -1,4 +1,5 @@
-var User = require("../models/User.js");
+const User = require("../models/User.js");
+const errorHandler = require("./errorHandler");
 
 exports.handleResetPasswordErrors = function(options = {}) {
   return function(req, res, next) {
@@ -9,7 +10,11 @@ exports.handleResetPasswordErrors = function(options = {}) {
       err,
       user
     ) {
-      if (err) return res.status(400).send(err);
+      if (err) {
+        res.status(400);
+        return errorHandler(err.message);
+      }
+
       if (!user) return res.status(401).json({ error: "Wrong credentials" });
       if (!user.passwordChange.valid)
         return res

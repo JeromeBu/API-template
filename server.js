@@ -30,6 +30,7 @@ var City = require("./models/City");
 var passport = require("passport");
 app.use(passport.initialize()); // TODO test
 
+const { errorHandler } = require("./middlewares/errorHandler");
 // Local for login + password
 var LocalStrategy = require("passport-local").Strategy;
 passport.use(
@@ -44,19 +45,19 @@ passport.use(
 );
 
 // authorization bearer
-var HTTPBearerStrategy = require("passport-http-bearer").Strategy;
+const HTTPBearerStrategy = require("passport-http-bearer").Strategy;
 passport.use(new HTTPBearerStrategy(User.authenticateBearer())); // La méthode `authenticateBearer` a été déclarée dans le model User
 
 app.get("/", function(req, res) {
   res.send("Welcome to the Airbnb API.");
 });
 
-var cors = require("cors"); // to authorize request to the API from another domaine
+const cors = require("cors"); // to authorize request to the API from another domaine
 app.use("/api", cors());
 
-var coreRoutes = require("./routes/core.js");
-var userRoutes = require("./routes/user.js");
-var roomRoutes = require("./routes/room.js");
+const coreRoutes = require("./routes/core.js");
+const userRoutes = require("./routes/user.js");
+const roomRoutes = require("./routes/room.js");
 
 app.use("/api", coreRoutes);
 app.use("/api/user", userRoutes);
@@ -69,13 +70,15 @@ app.all("*", function(req, res) {
 
 // Error handling middleware
 // This middleware is call with next(err_msg) within a route
-app.use(function(err, req, res, next) {
+function errorHandler(err, req, res, next) {
   if (res.statusCode === 200) res.status(400);
   console.error(err);
 
   if (config.ENV === "production") err = "An error occurred";
   res.json({ error: err });
-});
+}
+
+app.use(errorHandler);
 
 const server = app.listen(config.PORT, function() {
   console.log(

@@ -169,6 +169,7 @@ exports.reset_password_POST = function(req, res) {
       .json({ error: "Password and confirmation are different" });
   res.send("TODO: Post route for reset password");
 };
+
 exports.initial_get_user = function(req, res, next) {
   passport.authenticate("bearer", { session: false }, function(
     err,
