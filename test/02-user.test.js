@@ -10,9 +10,6 @@ var chaiHttp = require("chai-http");
 chai.use(chaiHttp);
 
 describe("Users", () => {
-  after(function() {
-    server.close();
-  });
   beforeEach(done => {
     User.remove({}, err => {
       done();

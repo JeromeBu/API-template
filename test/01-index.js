@@ -9,10 +9,6 @@ var chaiHttp = require("chai-http");
 chai.use(chaiHttp);
 
 describe("Home", function() {
-  after(function() {
-    server.close();
-  });
-
   describe("GET /", function() {
     it("respond with welcome message", function(done) {
       chai

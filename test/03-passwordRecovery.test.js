@@ -9,10 +9,6 @@ var chaiHttp = require("chai-http");
 chai.use(chaiHttp);
 
 describe("Recovery of password", function() {
-  after(function() {
-    server.close();
-    server.mongooseDisconnect(); // Needed in order to stop mocha from running
-  });
   describe("POST /api/user/forgotten_password", function() {
     beforeEach(done => {
       User.remove({}, err => {
@@ -101,6 +97,7 @@ describe("Recovery of password", function() {
     let validEmailUser = null;
     let notValidEmailUser = null;
     let outDatedTokenUser = null;
+    let alreadyUsedLinkUser = null;
     before(async function() {
       const initialPassword = "old_password";
       try {
@@ -115,6 +112,12 @@ describe("Recovery of password", function() {
           emailCheckValid: false,
           password: initialPassword,
           passwordChangeValid: true
+        });
+        alreadyUsedLinkUser = await factory.user({
+          email: "alreadyUsedLink@mail.com",
+          emailCheckValid: true,
+          password: initialPassword,
+          passwordChangeValid: false
         });
         let threeHoursAgo = new Date();
         threeHoursAgo.setHours(threeHoursAgo.getHours() - 3);
@@ -184,6 +187,23 @@ describe("Recovery of password", function() {
           res.body.should.have
             .property("error")
             .that.include("Wrong credentials");
+          done();
+        });
+    });
+    it("Raise error if the change password link has already been used", function(done) {
+      chai
+        .request(server)
+        .get(
+          `/api/user/reset_password?email=${alreadyUsedLinkUser.email}&token=${
+            alreadyUsedLinkUser.passwordChange.token
+          }`
+        )
+        .end(function(err, res) {
+          res.should.have.status(401);
+          res.should.be.a("object");
+          res.body.should.have
+            .property("error")
+            .that.include("link has already been used");
           done();
         });
     });

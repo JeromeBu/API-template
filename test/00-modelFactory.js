@@ -13,7 +13,7 @@ function user(options, callback) {
         createdAt: options.emailCheckCreatedAt || new Date()
       },
       passwordChange: {
-        valid: options.passwordChangeValid || false,
+        valid: options.passwordChangeValid === false ? false : true,
         token: options.passwordChangeToken || uid(20),
         createdAt: options.passwordChangeCreatedAt || new Date()
       },
