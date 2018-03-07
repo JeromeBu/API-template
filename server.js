@@ -70,14 +70,6 @@ app.all("*", function(req, res) {
 
 // Error handling middleware
 // This middleware is call with next(err_msg) within a route
-function errorHandler(err, req, res, next) {
-  if (res.statusCode === 200) res.status(400);
-  console.error(err);
-
-  if (config.ENV === "production") err = "An error occurred";
-  res.json({ error: err });
-}
-
 app.use(errorHandler);
 
 const server = app.listen(config.PORT, function() {

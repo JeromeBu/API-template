@@ -159,7 +159,7 @@ exports.reset_password_GET = function(req, res) {
   res.json({ message: "Ready to recieve new password" });
 };
 
-exports.reset_password_POST = function(req, res) {
+exports.reset_password_POST = function(req, res, next) {
   const { newPassword, newPasswordConfirmation } = req.body;
   if (!newPassword)
     return res.status(400).json({ error: "No password provided" });
@@ -167,7 +167,17 @@ exports.reset_password_POST = function(req, res) {
     return res
       .status(400)
       .json({ error: "Password and confirmation are different" });
-  res.send("TODO: Post route for reset password");
+  const user = req.user;
+  user.setPassword(newPassword, function() {
+    user.passwordChange.valid = false;
+    user.save(function(error) {
+      if (error) {
+        res.status(500);
+        return next(error.message);
+      }
+    });
+    res.status(200).json({ message: "Password reset successfully" });
+  });
 };
 
 exports.initial_get_user = function(req, res, next) {

@@ -32,6 +32,7 @@ exports.handleResetPasswordErrors = function(options = {}) {
           error: "Email not confirmed",
           message: "Please,validate your email first"
         });
+      req.user = user;
       next();
     });
   };
