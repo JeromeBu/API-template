@@ -270,4 +270,25 @@ describe("Users", () => {
       });
     });
   });
+
+  describe("GET testing authenticated route user/:id", function() {
+    it("Check autentification before giving access", function(done) {
+      factory.user({}, function(user) {
+        chai
+          .request(server)
+          .get(`/api/user/hello`)
+          .set("Authorization", `Bearer ${user.token}`)
+          .set("Content-Type", "application/json")
+          .end(function(err, res) {
+            should.not.exist(err);
+            res.should.have.status(200);
+            res.should.be.a("object");
+            res.body.should.have
+              .property("message")
+              .that.include("Your email has been verified with success");
+            done();
+          });
+      });
+    });
+  });
 });

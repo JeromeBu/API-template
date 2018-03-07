@@ -1,5 +1,5 @@
 const User = require("../models/User.js");
-const errorHandler = require("./errorHandler");
+const { errorHandler, checkLoggedIn } = require("./core");
 
 exports.handleResetPasswordErrors = function(options = {}) {
   return function(req, res, next) {

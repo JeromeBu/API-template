@@ -30,7 +30,7 @@ var City = require("./models/City");
 var passport = require("passport");
 app.use(passport.initialize()); // TODO test
 
-const { errorHandler } = require("./middlewares/errorHandler");
+const { errorHandler } = require("./middlewares/core");
 // Local for login + password
 var LocalStrategy = require("passport-local").Strategy;
 passport.use(
@@ -57,11 +57,11 @@ app.use("/api", cors());
 
 const coreRoutes = require("./routes/core.js");
 const userRoutes = require("./routes/user.js");
-const roomRoutes = require("./routes/room.js");
+// const roomRoutes = require("./routes/room.js");
 
 app.use("/api", coreRoutes);
 app.use("/api/user", userRoutes);
-app.use("/api/room", roomRoutes);
+// app.use("/api/room", roomRoutes);
 
 // Error 404 for all verbs (GET, POST, etc.) when page not found.
 app.all("*", function(req, res) {

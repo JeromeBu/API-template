@@ -181,37 +181,26 @@ exports.reset_password_POST = function(req, res, next) {
 };
 
 exports.initial_get_user = function(req, res, next) {
-  passport.authenticate("bearer", { session: false }, function(
-    err,
-    user,
-    info
-  ) {
-    if (err) {
+  const { current_user } = req;
+  console.log("current_user email : ", current_user.email);
+  User.findById(req.params.id)
+    .select("account")
+    .populate("account.rooms")
+    .populate("account.favorites")
+    .exec()
+    .then(function(user) {
+      if (!user) {
+        res.status(404);
+        return next("User not found");
+      }
+
+      return res.json({
+        _id: user._id,
+        account: user.account
+      });
+    })
+    .catch(function(err) {
       res.status(400);
       return next(err.message);
-    }
-    if (!user) {
-      return res.status(401).json({ error: "Unauthorized" });
-    }
-    User.findById(req.params.id)
-      .select("account")
-      .populate("account.rooms")
-      .populate("account.favorites")
-      .exec()
-      .then(function(user) {
-        if (!user) {
-          res.status(404);
-          return next("User not found");
-        }
-
-        return res.json({
-          _id: user._id,
-          account: user.account
-        });
-      })
-      .catch(function(err) {
-        res.status(400);
-        return next(err.message);
-      });
-  })(req, res, next);
+    });
 };
