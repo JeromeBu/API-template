@@ -94,46 +94,15 @@ describe("Recovery of password", function() {
   });
 
   describe("GET /api/user/reset_password", function() {
-    let validEmailUser = null;
-    let notValidEmailUser = null;
-    let outDatedTokenUser = null;
-    let alreadyUsedLinkUser = null;
+    const options = {
+      validEmailUser: null,
+      notValidEmailUser: null,
+      outDatedTokenUser: null,
+      alreadyUsedLinkUser: null
+    };
     const httpVerb = "get";
-    before(async function() {
-      const initialPassword = "old_password";
-      try {
-        await User.remove({}, err => {});
-        validEmailUser = await factory.user({
-          email: "validEmail@mail.com",
-          emailCheckValid: true,
-          password: initialPassword,
-          passwordChangeValid: true
-        });
-        notValidEmailUser = await factory.user({
-          email: "notValidEmail@mail.com",
-          emailCheckValid: false,
-          password: initialPassword,
-          passwordChangeValid: true
-        });
-        alreadyUsedLinkUser = await factory.user({
-          email: "alreadyUsedLink@mail.com",
-          emailCheckValid: true,
-          password: initialPassword,
-          passwordChangeValid: false
-        });
-        let threeHoursAgo = new Date();
-        threeHoursAgo.setHours(threeHoursAgo.getHours() - 3);
-        outDatedTokenUser = await factory.user({
-          email: "outDatedToken@mail.com",
-          emailCheckValid: true,
-          password: initialPassword,
-          passwordChangeValid: true,
-          passwordChangeCreatedAt: threeHoursAgo
-        });
-      } catch (e) {
-        console.error(e);
-      }
-    });
+    // IIFE
+    before(createTestUsers(options));
     it("Raise error if no email given", function(done) {
       noEmailGiven(done, httpVerb);
     });
@@ -161,46 +130,14 @@ describe("Recovery of password", function() {
   });
 
   describe("POST /api/user/reset_password", function() {
-    let validEmailUser = null;
-    let notValidEmailUser = null;
-    let outDatedTokenUser = null;
-    let alreadyUsedLinkUser = null;
+    const options = {
+      validEmailUser: null,
+      notValidEmailUser: null,
+      outDatedTokenUser: null,
+      alreadyUsedLinkUser: null
+    };
     const httpVerb = "post";
-    before(async function() {
-      const initialPassword = "old_password";
-      try {
-        await User.remove({}, err => {});
-        validEmailUser = await factory.user({
-          email: "validEmail@mail.com",
-          emailCheckValid: true,
-          password: initialPassword,
-          passwordChangeValid: true
-        });
-        notValidEmailUser = await factory.user({
-          email: "notValidEmail@mail.com",
-          emailCheckValid: false,
-          password: initialPassword,
-          passwordChangeValid: true
-        });
-        alreadyUsedLinkUser = await factory.user({
-          email: "alreadyUsedLink@mail.com",
-          emailCheckValid: true,
-          password: initialPassword,
-          passwordChangeValid: false
-        });
-        let threeHoursAgo = new Date();
-        threeHoursAgo.setHours(threeHoursAgo.getHours() - 3);
-        outDatedTokenUser = await factory.user({
-          email: "outDatedToken@mail.com",
-          emailCheckValid: true,
-          password: initialPassword,
-          passwordChangeValid: true,
-          passwordChangeCreatedAt: threeHoursAgo
-        });
-      } catch (e) {
-        console.error(e);
-      }
-    });
+    before(createTestUsers(options));
     it("Raise error if no email given", function(done) {
       noEmailGiven(done, httpVerb);
     });
@@ -287,6 +224,44 @@ describe("Recovery of password", function() {
     });
   });
 });
+
+function createTestUsers(options) {
+  return async function() {
+    const initialPassword = "old_password";
+    try {
+      await User.remove({}, err => {});
+      validEmailUser = await factory.user({
+        email: "validEmail@mail.com",
+        emailCheckValid: true,
+        password: initialPassword,
+        passwordChangeValid: true
+      });
+      notValidEmailUser = await factory.user({
+        email: "notValidEmail@mail.com",
+        emailCheckValid: false,
+        password: initialPassword,
+        passwordChangeValid: true
+      });
+      alreadyUsedLinkUser = await factory.user({
+        email: "alreadyUsedLink@mail.com",
+        emailCheckValid: true,
+        password: initialPassword,
+        passwordChangeValid: false
+      });
+      let threeHoursAgo = new Date();
+      threeHoursAgo.setHours(threeHoursAgo.getHours() - 3);
+      outDatedTokenUser = await factory.user({
+        email: "outDatedToken@mail.com",
+        emailCheckValid: true,
+        password: initialPassword,
+        passwordChangeValid: true,
+        passwordChangeCreatedAt: threeHoursAgo
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+}
 
 function noEmailGiven(done, verb, body = {}) {
   let request = chai.request(server)[verb](`/api/user/reset_password`);
