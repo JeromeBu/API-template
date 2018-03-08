@@ -53,8 +53,8 @@ app.get("/", function(req, res) {
 const cors = require("cors") // to authorize request to the API from another domaine
 app.use("/api", cors())
 
-const api = require("./api/api")
-app.use("/api", api)
+app.use("/auth", require("./auth/routes"))
+app.use("/api", require("./api/api"))
 
 // Error 404 for all verbs (GET, POST, etc.) when page not found.
 app.all("*", function(req, res) {
