@@ -276,7 +276,7 @@ describe("Users", () => {
       factory.user({}, function(user) {
         chai
           .request(server)
-          .get(`/api/user/hello`)
+          .get(`/api/user/5a96bc300ca5d2095c159770`)
           .set("Authorization", `Bearer ${user.token}`)
           .set("Content-Type", "application/json")
           .end(function(err, res) {

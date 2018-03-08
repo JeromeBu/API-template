@@ -200,6 +200,7 @@ exports.initial_get_user = function(req, res, next) {
       });
     })
     .catch(function(err) {
+      console.log(err.message);
       res.status(400);
       return next(err.message);
     });
