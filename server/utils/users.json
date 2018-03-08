@@ -1,0 +1,61 @@
+[
+  {
+    "id": 1,
+    "email": "ludivine@mail.com",
+    "photos": [
+      "https://a2.muscache.com/im/pictures/cbb34c90-7c22-4fe4-b1f1-965802ae2a5f.jpg?aki_policy=profile_x_medium",
+      "https://a2.muscache.com/im/users/4058432/profile_pic/1352061888/original.jpg?aki_policy=profile_x_medium"
+    ],
+    "description":
+      "My name is Ludivine, I'm French, 29 years old and work for a communication agency specialized in food. I am passionate about food (of course!) and everything related to it. I also love reading, yoga, dogs, traveling, meeting new people and sharing a good meal with them !\nI am non smoker, easy going and love a good glass of wine! I'm quiet but don't mind living in a busy environment.\n\nI look forward to meeting you !",
+    "favoriteIds": [2, 3],
+    "roomIds": [1]
+  },
+  {
+    "id": 2,
+    "email": "carine@mail.com",
+    "name": "Carine",
+    "photos": [
+      "https://a1.muscache.com/im/users/4654829/profile_pic/1410285266/original.jpg?aki_policy=profile_x_medium"
+    ],
+    "description":
+      "Adore les voyages, le cinéma, la musique, ...\nTrès sociable et ouverte d'esprit. J'adore apprendre de nouvelles choses, découvrir de nouvelles cultures, et de nouvelles personnes, ...",
+    "favoriteIds": [3, 4],
+    "roomIds": [2]
+  },
+  {
+    "id": 3,
+    "email": "arno@mail.com",
+    "name": "Arno",
+    "photos": [
+      "https://a0.muscache.com/im/users/4827357/profile_pic/1381308029/original.jpg?aki_policy=profile_x_medium",
+      "https://a2.muscache.com/im/users/4827357/profile_pic/1359105105/original.jpg?aki_policy=profile_x_medium"
+    ],
+    "description":
+      "Hello, I'm married, 2 kids, leaving in the center of Paris and loving it.\nI rent my own place and manage a few others.\nFor all of them, I'll be happy to advise you on your stay in Paris, nice places, best walks to reach them, shops, restaurants..... I'll be there.\nSee you soon in Paris.",
+    "favoriteIds": [5, 6],
+    "roomIds": [3]
+  },
+  {
+    "id": 4,
+    "email": "adrien@mail.com",
+    "photos": [
+      "https://a1.muscache.com/im/users/29318295/profile_pic/1426344329/original.jpg?aki_policy=profile_x_medium"
+    ],
+    "description": "Freedom",
+    "favoriteIds": [7, 8],
+    "roomIds": [4]
+  },
+  {
+    "id": 5,
+    "email": "scheryan@mail.fr",
+    "name": "Scheryan",
+    "photos": [
+      "https://a2.muscache.com/im/pictures/a137f243-fbe3-4806-9caa-3d7d1448f201.jpg?aki_policy=profile_x_medium"
+    ],
+    "description":
+      "We love this wonderful city and we're pleased to be able to offer this apt so that you may enjoy it as well.\nOur wish is for you to feel very comfortable and get the most out of your stay.\nWelcome to Paris! Have a great time. Should you stay with us, we will do everything imaginable to facilitate your best stay possible, this is our promise to you. We have not yet had a guest who did not love the place.",
+    "favoriteIds": [7, 8],
+    "roomIds": [5]
+  }
+]

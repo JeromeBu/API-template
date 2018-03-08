@@ -1,0 +1,732 @@
+[{
+  "id": 1,
+  "cityId": "paris",
+  "userId": 1,
+  "photos": [
+    "https://a2.muscache.com/im/pictures/52a738e1-d699-4e6e-af31-b7aaf59e2b03.jpg",
+    "https://a2.muscache.com/im/pictures/128dc52b-d10a-49f7-9e88-e11beee90491.jpg",
+    "https://a2.muscache.com/im/pictures/584f9bfe-7048-4f60-822d-54ddabd76c81.jpg",
+    "https://a2.muscache.com/im/pictures/13276e19-fa34-47ee-b2b5-ef94da10e89a.jpg",
+    "https://a2.muscache.com/im/pictures/3e38b958-3ee6-43cb-9d07-7c35045584bf.jpg",
+    "https://a2.muscache.com/im/pictures/69a5dccb-fb34-4600-a7d8-c47b6b1565ea.jpg",
+    "https://a2.muscache.com/im/pictures/dedd197c-9606-4246-9a81-ae1be6ae6e61.jpg",
+    "https://a2.muscache.com/im/pictures/4029375e-3e6b-43fb-9c80-7f15d226ed82.jpg",
+    "https://a2.muscache.com/im/pictures/47c02adc-f80f-4044-b1ad-333f4f172ccf.jpg",
+    "https://a2.muscache.com/im/pictures/f03430ba-255b-430b-a589-b3945a1464a0.jpg",
+    "https://a2.muscache.com/im/pictures/11aa1a71-485b-4873-8d47-95925decd89e.jpg",
+    "https://a2.muscache.com/im/pictures/230c9606-e40c-4ff0-852d-02d373b5e9a5.jpg",
+    "https://a2.muscache.com/im/pictures/d45e101d-fd4b-47f4-afae-462ce8b23ce3.jpg",
+    "https://a2.muscache.com/im/pictures/722a8686-275d-4c23-bb95-ff11a598b8a0.jpg"
+  ],
+  "title": "Apt à Montmartre lumineux et cosy",
+  "description": "Mon appartement est au pied de Montmartre, juste en bas des vignes, à moins de 10 min du Sacré Coeur. A 2 min du métro sur la ligne 12, il y a tous les commerces nécessaires dans le quartier.\nL'appartement vient d'être refait à neuf.",
+  "price": 80,
+  "ratingValue": 5,
+  "reviews": 80,
+  "loc": {
+    "lat": 48.8901751,
+    "lon": 2.3374505
+  }
+}, {
+  "id": 2,
+  "cityId": "paris",
+  "userId": 2,
+  "photos": [
+    "https://a2.muscache.com/im/pictures/93801377/82b55123_original.jpg",
+    "https://a2.muscache.com/im/pictures/93801440/8198ed7e_original.jpg",
+    "https://a1.muscache.com/im/pictures/93801405/599ba94f_original.jpg",
+    "https://a0.muscache.com/im/pictures/93801478/a1ad2ca8_original.jpg"
+  ],
+  "title": "Logement entier - Gambetta, Paris",
+  "description": "Deux pièces à Gambetta. Une chambre et un salon avec cuisine ouverte. Salle de bain avec toilettes et baignoire. Plusieurs commerces tout au long de la rue.\nProche du cimetière Père Lachaise, de Belleville, et du Parc des Buttes Chaumont.\nTrès calme.",
+  "price": 20,
+  "ratingValue": 4,
+  "reviews": 5,
+  "loc": {
+    "lat": 48.8613664,
+    "lon": 2.3981123
+  }
+}, {
+  "id": 3,
+  "cityId": "paris",
+  "userId": 3,
+  "photos": [
+    "https://a2.muscache.com/im/pictures/60541451/7a1644c5_original.jpg",
+    "https://a1.muscache.com/im/pictures/60536951/d2059103_original.jpg",
+    "https://a0.muscache.com/im/pictures/60541519/08ccb050_original.jpg",
+    "https://a0.muscache.com/im/pictures/60541424/83488b39_original.jpg",
+    "https://a2.muscache.com/im/pictures/60541484/6a88b706_original.jpg",
+    "https://a1.muscache.com/im/pictures/60537294/c7577313_original.jpg",
+    "https://a1.muscache.com/im/pictures/60537654/5dbbc5d9_original.jpg",
+    "https://a2.muscache.com/im/pictures/60538349/bef606a3_original.jpg",
+    "https://a0.muscache.com/im/pictures/60538379/37f848e3_original.jpg",
+    "https://a1.muscache.com/im/pictures/60538410/9af3b439_original.jpg",
+    "https://a2.muscache.com/im/pictures/60539013/fcfbe95d_original.jpg",
+    "https://a0.muscache.com/im/pictures/60539030/8732066b_original.jpg",
+    "https://a0.muscache.com/im/pictures/60539054/906a0542_original.jpg",
+    "https://a0.muscache.com/im/pictures/60539548/49c8d401_original.jpg",
+    "https://a0.muscache.com/im/pictures/60539594/a1d8667c_original.jpg",
+    "https://a1.muscache.com/im/pictures/60539642/dbb4e6ee_original.jpg",
+    "https://a0.muscache.com/im/pictures/60539683/dd9b4a3f_original.jpg",
+    "https://a1.muscache.com/im/pictures/60540457/b963f141_original.jpg",
+    "https://a2.muscache.com/im/pictures/78853341/ad886258_original.jpg",
+    "https://a0.muscache.com/im/pictures/60540482/d56ffb2c_original.jpg",
+    "https://a2.muscache.com/im/pictures/60540618/a2369383_original.jpg",
+    "https://a0.muscache.com/im/pictures/60541371/9f79e106_original.jpg",
+    "https://a1.muscache.com/im/pictures/60542250/8cdcfcf2_original.jpg",
+    "https://a0.muscache.com/im/pictures/60541554/46fb4044_original.jpg",
+    "https://a2.muscache.com/im/pictures/60541761/a90ef5a2_original.jpg",
+    "https://a0.muscache.com/im/pictures/60542274/f9066bc5_original.jpg",
+    "https://a2.muscache.com/im/pictures/60541808/90bf2896_original.jpg",
+    "https://a1.muscache.com/im/pictures/60541906/230ad393_original.jpg"
+  ],
+  "title": "Exceptionnl apt 6 p. on River Seine",
+  "description": "Vue exceptionnelle et hypercentral sont les meilleurs mots pour décrire notre appartement situé dans un très bel immeuble du 18e siècle au coeur du quartier latin en face de Notre-Dame.\nPour voir toutes les photos clickez sur celle du haut.",
+  "price": 480,
+  "ratingValue": 5,
+  "reviews": 19,
+  "loc": {
+  "lat": 48.8534078,
+  "lon": 2.3434604
+  }
+}, {
+  "id": 4,
+  "cityId": "paris",
+  "userId": 4,
+  "photos": [
+    "https://a2.muscache.com/im/pictures/a560cdc0-425d-4d7b-ab8a-f98481eeb23f.jpg",
+    "https://a2.muscache.com/im/pictures/38eb9bfe-bd03-4c21-a3b8-4d3c8e44c4c9.jpg",
+    "https://a2.muscache.com/im/pictures/3e3b2eda-f99f-4ac3-94dd-3c3dc8f80c7a.jpg",
+    "https://a2.muscache.com/im/pictures/25308387-a29c-4442-b927-39f2bd9c0e6f.jpg",
+    "https://a2.muscache.com/im/pictures/75eddc91-0cc8-4d05-8edd-7c726c5dea07.jpg",
+    "https://a2.muscache.com/im/pictures/db9f14c0-e7bc-4d2c-a87a-3f8ed0dce7ff.jpg",
+    "https://a2.muscache.com/im/pictures/7def02c0-263e-411d-be58-88c3fba2c4fc.jpg",
+    "https://a2.muscache.com/im/pictures/65487b48-44e1-4db4-ba32-bf7c164c7329.jpg",
+    "https://a2.muscache.com/im/pictures/873a4707-ab0d-4b44-a564-65f2e6db723e.jpg",
+    "https://a2.muscache.com/im/pictures/c27e1b16-3ee6-428f-b299-68d4cb4d50f6.jpg",
+    "https://a2.muscache.com/im/pictures/4b36c0da-2184-4943-92d3-e5106de27a9a.jpg"
+  ],
+  "title": "Vue Tour Eiffel à Saint Germain!",
+  "description": "Appartement refait à neuf plein charme rue du Cherche-Midi, au cœur du 6eme arrondissement. A deux pas du Luxembourg et du Bon Marché. Deux chambres, sublime vue sur la Tour Eiffel, 2 balcons, très jolie salle de bain avec WC séparés. Cuisine équipée ouverte, canapé-lit, wifi... Un rêve!",
+  "price": 200,
+  "ratingValue": 5,
+  "reviews": 48,
+  "loc": {
+    "lat": 48.8480923,
+    "lon": 2.3215788
+  }
+}, {
+  "id": 5,
+  "cityId": "paris",
+  "userId": 5,
+  "photos": [
+    "https://a2.muscache.com/im/pictures/78258559/75143e16_original.jpg",
+    "https://a1.muscache.com/im/pictures/94115999/69e19b9f_original.jpg",
+    "https://a1.muscache.com/im/pictures/94116113/39f01888_original.jpg",
+    "https://a0.muscache.com/im/pictures/78258742/42b26479_original.jpg",
+    "https://a1.muscache.com/im/pictures/78258750/ee52abac_original.jpg",
+    "https://a1.muscache.com/im/pictures/78258866/6125dc9a_original.jpg",
+    "https://a2.muscache.com/im/pictures/78258872/cc2c590e_original.jpg",
+    "https://a0.muscache.com/im/pictures/78258879/de57b358_original.jpg",
+    "https://a0.muscache.com/im/pictures/78258884/5c57c1de_original.jpg",
+    "https://a2.muscache.com/im/pictures/7606a3da-e49d-43d1-a1b8-3bac6529148d.jpg",
+    "https://a2.muscache.com/im/pictures/cf48e162-0259-4813-bc4c-af9cb9fe2482.jpg",
+    "https://a2.muscache.com/im/pictures/5f8b17f6-0aee-46c1-81b4-855a8d0da9d9.jpg",
+    "https://a2.muscache.com/im/pictures/0d515e48-1ad4-4453-b342-dc39528de7af.jpg",
+    "https://a1.muscache.com/im/pictures/78258888/0f60f239_original.jpg",
+    "https://a2.muscache.com/im/pictures/2792f5d9-0b6e-4338-806e-84a96299d803.jpg",
+    "https://a2.muscache.com/im/pictures/ab077333-cd25-4139-8e8a-a0fecbf7d264.jpg",
+    "https://a2.muscache.com/im/pictures/4f920fd6-ed6f-40f7-a7c3-05df2fd9f1b4.jpg",
+    "https://a2.muscache.com/im/pictures/82e25500-ad6e-41a9-91dd-aff4a686585e.jpg",
+    "https://a1.muscache.com/im/pictures/78259052/33ae1034_original.jpg",
+    "https://a1.muscache.com/im/pictures/78259055/59295f32_original.jpg",
+    "https://a1.muscache.com/im/pictures/78259055/59295f32_original.jpg",
+    "https://a1.muscache.com/im/pictures/78259056/d6a384b1_original.jpg",
+    "https://a2.muscache.com/im/pictures/78259059/3f7fc75a_original.jpg",
+    "https://a1.muscache.com/im/pictures/78259067/8aa56f69_original.jpg",
+    "https://a2.muscache.com/im/pictures/fc8144b4-1db1-45a0-9772-8e566ea89c2f.jpg",
+    "https://a2.muscache.com/im/pictures/78259071/259cf03b_original.jpg",
+    "https://a2.muscache.com/im/pictures/c331c395-a241-42d6-ba11-e37ff88cc0e7.jpg",
+    "https://a1.muscache.com/im/pictures/94116260/10f4b78e_original.jpg",
+    "https://a0.muscache.com/im/pictures/78258737/005bda16_original.jpg",
+    "https://a2.muscache.com/im/pictures/cc71f67f-5508-416f-ab77-ed1850db1f85.jpg",
+    "https://a0.muscache.com/im/pictures/78259237/76ec03c4_original.jpg",
+    "https://a2.muscache.com/im/pictures/78259243/eb687626_original.jpg",
+    "https://a0.muscache.com/im/pictures/78259368/76dff8dd_original.jpg",
+    "https://a2.muscache.com/im/pictures/78259359/4142efdd_original.jpg",
+    "https://a2.muscache.com/im/pictures/63468cc8-6978-479b-a7a3-742c6e053c11.jpg"
+  ],
+  "title": "Eiffel Tower Luxury 90m², 2 Terraces",
+  "description": "This is a completely renovated flat, close to Eiffel Tower and the Seine river, meant to inspire a true Parisian experience. Elegant two bedrooms of about 90 sqm with 2 terraces and a private car park.",
+  "price": 219,
+  "ratingValue": 5,
+  "reviews": 84,
+  "loc": {
+    "lat": 48.8498514,
+    "lon": 2.2841681
+  }
+}, {
+  "id": 6,
+  "cityId": "new_york",
+  "userId": 1,
+  "photos": [
+    "https://a2.muscache.com/im/pictures/52a738e1-d699-4e6e-af31-b7aaf59e2b03.jpg",
+    "https://a2.muscache.com/im/pictures/128dc52b-d10a-49f7-9e88-e11beee90491.jpg",
+    "https://a2.muscache.com/im/pictures/584f9bfe-7048-4f60-822d-54ddabd76c81.jpg",
+    "https://a2.muscache.com/im/pictures/13276e19-fa34-47ee-b2b5-ef94da10e89a.jpg",
+    "https://a2.muscache.com/im/pictures/3e38b958-3ee6-43cb-9d07-7c35045584bf.jpg",
+    "https://a2.muscache.com/im/pictures/69a5dccb-fb34-4600-a7d8-c47b6b1565ea.jpg",
+    "https://a2.muscache.com/im/pictures/dedd197c-9606-4246-9a81-ae1be6ae6e61.jpg",
+    "https://a2.muscache.com/im/pictures/4029375e-3e6b-43fb-9c80-7f15d226ed82.jpg",
+    "https://a2.muscache.com/im/pictures/47c02adc-f80f-4044-b1ad-333f4f172ccf.jpg",
+    "https://a2.muscache.com/im/pictures/f03430ba-255b-430b-a589-b3945a1464a0.jpg",
+    "https://a2.muscache.com/im/pictures/11aa1a71-485b-4873-8d47-95925decd89e.jpg",
+    "https://a2.muscache.com/im/pictures/230c9606-e40c-4ff0-852d-02d373b5e9a5.jpg",
+    "https://a2.muscache.com/im/pictures/d45e101d-fd4b-47f4-afae-462ce8b23ce3.jpg",
+    "https://a2.muscache.com/im/pictures/722a8686-275d-4c23-bb95-ff11a598b8a0.jpg"
+  ],
+  "title": "Apt à Montmartre lumineux et cosy",
+  "description": "Mon appartement est au pied de Montmartre, juste en bas des vignes, à moins de 10 min du Sacré Coeur. A 2 min du métro sur la ligne 12, il y a tous les commerces nécessaires dans le quartier.\nL'appartement vient d'être refait à neuf.",
+  "price": 80,
+  "ratingValue": 5,
+  "reviews": 80,
+  "loc": {
+    "lat": 48.8901751,
+    "lon": 2.3374505
+  }
+}, {
+  "id": 7,
+  "cityId": "new_york",
+  "userId": 2,
+  "photos": [
+    "https://a0.muscache.com/airbnb/static/destinations/o-Paris_480x320.jpg",
+    "https://a0.muscache.com/airbnb/static/destinations/o-Paris_480x320.jpg"
+  ],
+  "title": "Logement entier - Gambetta, Paris",
+  "description": "Deux pièces à Gambetta. Une chambre et un salon avec cuisine ouverte. Salle de bain avec toilettes et baignoire. Plusieurs commerces tout au long de la rue.\nProche du cimetière Père Lachaise, de Belleville, et du Parc des Buttes Chaumont.\nTrès calme.",
+  "price": 20,
+  "ratingValue": 4,
+  "reviews": 5,
+  "loc": {
+    "lat": 48.8613664,
+    "lon": 2.3981123
+  }
+}, {
+  "id": 8,
+  "cityId": "new_york",
+  "userId": 3,
+  "photos": [
+    "https://a2.muscache.com/im/pictures/60541451/7a1644c5_original.jpg",
+    "https://a1.muscache.com/im/pictures/60536951/d2059103_original.jpg",
+    "https://a0.muscache.com/im/pictures/60541519/08ccb050_original.jpg",
+    "https://a0.muscache.com/im/pictures/60541424/83488b39_original.jpg",
+    "https://a2.muscache.com/im/pictures/60541484/6a88b706_original.jpg",
+    "https://a1.muscache.com/im/pictures/60537294/c7577313_original.jpg",
+    "https://a1.muscache.com/im/pictures/60537654/5dbbc5d9_original.jpg",
+    "https://a2.muscache.com/im/pictures/60538349/bef606a3_original.jpg",
+    "https://a0.muscache.com/im/pictures/60538379/37f848e3_original.jpg",
+    "https://a1.muscache.com/im/pictures/60538410/9af3b439_original.jpg",
+    "https://a2.muscache.com/im/pictures/60539013/fcfbe95d_original.jpg",
+    "https://a0.muscache.com/im/pictures/60539030/8732066b_original.jpg",
+    "https://a0.muscache.com/im/pictures/60539054/906a0542_original.jpg",
+    "https://a0.muscache.com/im/pictures/60539548/49c8d401_original.jpg",
+    "https://a0.muscache.com/im/pictures/60539594/a1d8667c_original.jpg",
+    "https://a1.muscache.com/im/pictures/60539642/dbb4e6ee_original.jpg",
+    "https://a0.muscache.com/im/pictures/60539683/dd9b4a3f_original.jpg",
+    "https://a1.muscache.com/im/pictures/60540457/b963f141_original.jpg",
+    "https://a2.muscache.com/im/pictures/78853341/ad886258_original.jpg",
+    "https://a0.muscache.com/im/pictures/60540482/d56ffb2c_original.jpg",
+    "https://a2.muscache.com/im/pictures/60540618/a2369383_original.jpg",
+    "https://a0.muscache.com/im/pictures/60541371/9f79e106_original.jpg",
+    "https://a1.muscache.com/im/pictures/60542250/8cdcfcf2_original.jpg",
+    "https://a0.muscache.com/im/pictures/60541554/46fb4044_original.jpg",
+    "https://a2.muscache.com/im/pictures/60541761/a90ef5a2_original.jpg",
+    "https://a0.muscache.com/im/pictures/60542274/f9066bc5_original.jpg",
+    "https://a2.muscache.com/im/pictures/60541808/90bf2896_original.jpg",
+    "https://a1.muscache.com/im/pictures/60541906/230ad393_original.jpg"
+  ],
+  "title": "Exceptionnl apt 6 p. on River Seine",
+  "description": "Vue exceptionnelle et hypercentral sont les meilleurs mots pour décrire notre appartement situé dans un très bel immeuble du 18e siècle au coeur du quartier latin en face de Notre-Dame.\nPour voir toutes les photos clickez sur celle du haut.",
+  "price": 480,
+  "ratingValue": 5,
+  "reviews": 19,
+  "loc": {
+    "lat": 48.8534078,
+    "lon": 2.3434604
+  }
+}, {
+  "id": 9,
+  "cityId": "new_york",
+  "userId": 4,
+  "photos": [
+    "https://a2.muscache.com/im/pictures/a560cdc0-425d-4d7b-ab8a-f98481eeb23f.jpg",
+    "https://a2.muscache.com/im/pictures/38eb9bfe-bd03-4c21-a3b8-4d3c8e44c4c9.jpg",
+    "https://a2.muscache.com/im/pictures/3e3b2eda-f99f-4ac3-94dd-3c3dc8f80c7a.jpg",
+    "https://a2.muscache.com/im/pictures/25308387-a29c-4442-b927-39f2bd9c0e6f.jpg",
+    "https://a2.muscache.com/im/pictures/75eddc91-0cc8-4d05-8edd-7c726c5dea07.jpg",
+    "https://a2.muscache.com/im/pictures/db9f14c0-e7bc-4d2c-a87a-3f8ed0dce7ff.jpg",
+    "https://a2.muscache.com/im/pictures/7def02c0-263e-411d-be58-88c3fba2c4fc.jpg",
+    "https://a2.muscache.com/im/pictures/65487b48-44e1-4db4-ba32-bf7c164c7329.jpg",
+    "https://a2.muscache.com/im/pictures/873a4707-ab0d-4b44-a564-65f2e6db723e.jpg",
+    "https://a2.muscache.com/im/pictures/c27e1b16-3ee6-428f-b299-68d4cb4d50f6.jpg",
+    "https://a2.muscache.com/im/pictures/4b36c0da-2184-4943-92d3-e5106de27a9a.jpg"
+  ],
+  "title": "Vue Tour Eiffel à Saint Germain!",
+  "description": "Appartement refait à neuf plein charme rue du Cherche-Midi, au cœur du 6eme arrondissement. A deux pas du Luxembourg et du Bon Marché. Deux chambres, sublime vue sur la Tour Eiffel, 2 balcons, très jolie salle de bain avec WC séparés. Cuisine équipée ouverte, canapé-lit, wifi... Un rêve!",
+  "price": 200,
+  "ratingValue": 5,
+  "reviews": 48,
+  "loc": {
+    "lat": 48.8480923,
+    "lon": 2.3215788
+  }
+}, {
+  "id": 10,
+  "cityId": "new_york",
+  "userId": 5,
+  "photos": [
+    "https://a2.muscache.com/im/pictures/a560cdc0-425d-4d7b-ab8a-f98481eeb23f.jpg",
+    "https://a2.muscache.com/im/pictures/38eb9bfe-bd03-4c21-a3b8-4d3c8e44c4c9.jpg",
+    "https://a2.muscache.com/im/pictures/3e3b2eda-f99f-4ac3-94dd-3c3dc8f80c7a.jpg",
+    "https://a2.muscache.com/im/pictures/25308387-a29c-4442-b927-39f2bd9c0e6f.jpg",
+    "https://a2.muscache.com/im/pictures/75eddc91-0cc8-4d05-8edd-7c726c5dea07.jpg",
+    "https://a2.muscache.com/im/pictures/db9f14c0-e7bc-4d2c-a87a-3f8ed0dce7ff.jpg",
+    "https://a2.muscache.com/im/pictures/7def02c0-263e-411d-be58-88c3fba2c4fc.jpg",
+    "https://a2.muscache.com/im/pictures/65487b48-44e1-4db4-ba32-bf7c164c7329.jpg",
+    "https://a2.muscache.com/im/pictures/873a4707-ab0d-4b44-a564-65f2e6db723e.jpg",
+    "https://a2.muscache.com/im/pictures/c27e1b16-3ee6-428f-b299-68d4cb4d50f6.jpg",
+    "https://a2.muscache.com/im/pictures/4b36c0da-2184-4943-92d3-e5106de27a9a.jpg"
+  ],
+  "title": "Eiffel Tower Luxury 90m², 2 Terraces",
+  "description": "This is a completely renovated flat, close to Eiffel Tower and the Seine river, meant to inspire a true Parisian experience. Elegant two bedrooms of about 90 sqm with 2 terraces and a private car park.",
+  "price": 200,
+  "ratingValue": 5,
+  "reviews": 48,
+  "loc": {
+    "lat": 48.8480923,
+    "lon": 2.3215788
+  }
+}, {
+  "id": 11,
+  "cityId": "london",
+  "userId": 1,
+  "photos": [
+    "https://a2.muscache.com/im/pictures/52a738e1-d699-4e6e-af31-b7aaf59e2b03.jpg",
+    "https://a2.muscache.com/im/pictures/128dc52b-d10a-49f7-9e88-e11beee90491.jpg",
+    "https://a2.muscache.com/im/pictures/584f9bfe-7048-4f60-822d-54ddabd76c81.jpg",
+    "https://a2.muscache.com/im/pictures/13276e19-fa34-47ee-b2b5-ef94da10e89a.jpg",
+    "https://a2.muscache.com/im/pictures/3e38b958-3ee6-43cb-9d07-7c35045584bf.jpg",
+    "https://a2.muscache.com/im/pictures/69a5dccb-fb34-4600-a7d8-c47b6b1565ea.jpg",
+    "https://a2.muscache.com/im/pictures/dedd197c-9606-4246-9a81-ae1be6ae6e61.jpg",
+    "https://a2.muscache.com/im/pictures/4029375e-3e6b-43fb-9c80-7f15d226ed82.jpg",
+    "https://a2.muscache.com/im/pictures/47c02adc-f80f-4044-b1ad-333f4f172ccf.jpg",
+    "https://a2.muscache.com/im/pictures/f03430ba-255b-430b-a589-b3945a1464a0.jpg",
+    "https://a2.muscache.com/im/pictures/11aa1a71-485b-4873-8d47-95925decd89e.jpg",
+    "https://a2.muscache.com/im/pictures/230c9606-e40c-4ff0-852d-02d373b5e9a5.jpg",
+    "https://a2.muscache.com/im/pictures/d45e101d-fd4b-47f4-afae-462ce8b23ce3.jpg",
+    "https://a2.muscache.com/im/pictures/722a8686-275d-4c23-bb95-ff11a598b8a0.jpg"
+  ],
+  "title": "Apt à Montmartre lumineux et cosy",
+  "description": "Mon appartement est au pied de Montmartre, juste en bas des vignes, à moins de 10 min du Sacré Coeur. A 2 min du métro sur la ligne 12, il y a tous les commerces nécessaires dans le quartier.\nL'appartement vient d'être refait à neuf.",
+  "price": 80,
+  "ratingValue": 5,
+  "reviews": 80,
+  "loc": {
+    "lat": 48.8901751,
+    "lon": 2.3374505
+  }
+}, {
+  "id": 12,
+  "cityId": "london",
+  "userId": 2,
+  "photos": [
+    "https://a0.muscache.com/airbnb/static/destinations/o-Paris_480x320.jpg",
+    "https://a0.muscache.com/airbnb/static/destinations/o-Paris_480x320.jpg"
+  ],
+  "title": "Logement entier - Gambetta, Paris",
+  "description": "Deux pièces à Gambetta. Une chambre et un salon avec cuisine ouverte. Salle de bain avec toilettes et baignoire. Plusieurs commerces tout au long de la rue.\nProche du cimetière Père Lachaise, de Belleville, et du Parc des Buttes Chaumont.\nTrès calme.",
+  "price": 20,
+  "ratingValue": 4,
+  "reviews": 5,
+  "loc": {
+    "lat": 48.8613664,
+    "lon": 2.3981123
+  }
+}, {
+  "id": 13,
+  "cityId": "london",
+  "userId": 3,
+  "photos": [
+    "https://a2.muscache.com/im/pictures/60541451/7a1644c5_original.jpg",
+    "https://a1.muscache.com/im/pictures/60536951/d2059103_original.jpg",
+    "https://a0.muscache.com/im/pictures/60541519/08ccb050_original.jpg",
+    "https://a0.muscache.com/im/pictures/60541424/83488b39_original.jpg",
+    "https://a2.muscache.com/im/pictures/60541484/6a88b706_original.jpg",
+    "https://a1.muscache.com/im/pictures/60537294/c7577313_original.jpg",
+    "https://a1.muscache.com/im/pictures/60537654/5dbbc5d9_original.jpg",
+    "https://a2.muscache.com/im/pictures/60538349/bef606a3_original.jpg",
+    "https://a0.muscache.com/im/pictures/60538379/37f848e3_original.jpg",
+    "https://a1.muscache.com/im/pictures/60538410/9af3b439_original.jpg",
+    "https://a2.muscache.com/im/pictures/60539013/fcfbe95d_original.jpg",
+    "https://a0.muscache.com/im/pictures/60539030/8732066b_original.jpg",
+    "https://a0.muscache.com/im/pictures/60539054/906a0542_original.jpg",
+    "https://a0.muscache.com/im/pictures/60539548/49c8d401_original.jpg",
+    "https://a0.muscache.com/im/pictures/60539594/a1d8667c_original.jpg",
+    "https://a1.muscache.com/im/pictures/60539642/dbb4e6ee_original.jpg",
+    "https://a0.muscache.com/im/pictures/60539683/dd9b4a3f_original.jpg",
+    "https://a1.muscache.com/im/pictures/60540457/b963f141_original.jpg",
+    "https://a2.muscache.com/im/pictures/78853341/ad886258_original.jpg",
+    "https://a0.muscache.com/im/pictures/60540482/d56ffb2c_original.jpg",
+    "https://a2.muscache.com/im/pictures/60540618/a2369383_original.jpg",
+    "https://a0.muscache.com/im/pictures/60541371/9f79e106_original.jpg",
+    "https://a1.muscache.com/im/pictures/60542250/8cdcfcf2_original.jpg",
+    "https://a0.muscache.com/im/pictures/60541554/46fb4044_original.jpg",
+    "https://a2.muscache.com/im/pictures/60541761/a90ef5a2_original.jpg",
+    "https://a0.muscache.com/im/pictures/60542274/f9066bc5_original.jpg",
+    "https://a2.muscache.com/im/pictures/60541808/90bf2896_original.jpg",
+    "https://a1.muscache.com/im/pictures/60541906/230ad393_original.jpg"
+  ],
+  "title": "Exceptionnl apt 6 p. on River Seine",
+  "description": "Vue exceptionnelle et hypercentral sont les meilleurs mots pour décrire notre appartement situé dans un très bel immeuble du 18e siècle au coeur du quartier latin en face de Notre-Dame.\nPour voir toutes les photos clickez sur celle du haut.",
+  "price": 480,
+  "ratingValue": 5,
+  "reviews": 19,
+  "loc": {
+    "lat": 48.8534078,
+    "lon": 2.3434604
+  }
+}, {
+  "id": 14,
+  "cityId": "london",
+  "userId": 4,
+  "photos": [
+    "https://a2.muscache.com/im/pictures/a560cdc0-425d-4d7b-ab8a-f98481eeb23f.jpg",
+    "https://a2.muscache.com/im/pictures/38eb9bfe-bd03-4c21-a3b8-4d3c8e44c4c9.jpg",
+    "https://a2.muscache.com/im/pictures/3e3b2eda-f99f-4ac3-94dd-3c3dc8f80c7a.jpg",
+    "https://a2.muscache.com/im/pictures/25308387-a29c-4442-b927-39f2bd9c0e6f.jpg",
+    "https://a2.muscache.com/im/pictures/75eddc91-0cc8-4d05-8edd-7c726c5dea07.jpg",
+    "https://a2.muscache.com/im/pictures/db9f14c0-e7bc-4d2c-a87a-3f8ed0dce7ff.jpg",
+    "https://a2.muscache.com/im/pictures/7def02c0-263e-411d-be58-88c3fba2c4fc.jpg",
+    "https://a2.muscache.com/im/pictures/65487b48-44e1-4db4-ba32-bf7c164c7329.jpg",
+    "https://a2.muscache.com/im/pictures/873a4707-ab0d-4b44-a564-65f2e6db723e.jpg",
+    "https://a2.muscache.com/im/pictures/c27e1b16-3ee6-428f-b299-68d4cb4d50f6.jpg",
+    "https://a2.muscache.com/im/pictures/4b36c0da-2184-4943-92d3-e5106de27a9a.jpg"
+  ],
+  "title": "Vue Tour Eiffel à Saint Germain!",
+  "description": "Appartement refait à neuf plein charme rue du Cherche-Midi, au cœur du 6eme arrondissement. A deux pas du Luxembourg et du Bon Marché. Deux chambres, sublime vue sur la Tour Eiffel, 2 balcons, très jolie salle de bain avec WC séparés. Cuisine équipée ouverte, canapé-lit, wifi... Un rêve!",
+  "price": 200,
+  "ratingValue": 5,
+  "reviews": 48,
+  "loc": {
+    "lat": 48.8480923,
+    "lon": 2.3215788
+  }
+}, {
+  "id": 15,
+  "cityId": "london",
+  "userId": 5,
+  "photos": [
+    "https://a2.muscache.com/im/pictures/a560cdc0-425d-4d7b-ab8a-f98481eeb23f.jpg",
+    "https://a2.muscache.com/im/pictures/38eb9bfe-bd03-4c21-a3b8-4d3c8e44c4c9.jpg",
+    "https://a2.muscache.com/im/pictures/3e3b2eda-f99f-4ac3-94dd-3c3dc8f80c7a.jpg",
+    "https://a2.muscache.com/im/pictures/25308387-a29c-4442-b927-39f2bd9c0e6f.jpg",
+    "https://a2.muscache.com/im/pictures/75eddc91-0cc8-4d05-8edd-7c726c5dea07.jpg",
+    "https://a2.muscache.com/im/pictures/db9f14c0-e7bc-4d2c-a87a-3f8ed0dce7ff.jpg",
+    "https://a2.muscache.com/im/pictures/7def02c0-263e-411d-be58-88c3fba2c4fc.jpg",
+    "https://a2.muscache.com/im/pictures/65487b48-44e1-4db4-ba32-bf7c164c7329.jpg",
+    "https://a2.muscache.com/im/pictures/873a4707-ab0d-4b44-a564-65f2e6db723e.jpg",
+    "https://a2.muscache.com/im/pictures/c27e1b16-3ee6-428f-b299-68d4cb4d50f6.jpg",
+    "https://a2.muscache.com/im/pictures/4b36c0da-2184-4943-92d3-e5106de27a9a.jpg"
+  ],
+  "title": "Eiffel Tower Luxury 90m², 2 Terraces",
+  "description": "This is a completely renovated flat, close to Eiffel Tower and the Seine river, meant to inspire a true Parisian experience. Elegant two bedrooms of about 90 sqm with 2 terraces and a private car park.",
+  "price": 200,
+  "ratingValue": 5,
+  "reviews": 48,
+  "loc": {
+    "lat": 48.8480923,
+    "lon": 2.3215788
+  }
+}, {
+  "id": 16,
+  "cityId": "los_angeles",
+  "userId": 1,
+  "photos": [
+    "https://a2.muscache.com/im/pictures/52a738e1-d699-4e6e-af31-b7aaf59e2b03.jpg",
+    "https://a2.muscache.com/im/pictures/128dc52b-d10a-49f7-9e88-e11beee90491.jpg",
+    "https://a2.muscache.com/im/pictures/584f9bfe-7048-4f60-822d-54ddabd76c81.jpg",
+    "https://a2.muscache.com/im/pictures/13276e19-fa34-47ee-b2b5-ef94da10e89a.jpg",
+    "https://a2.muscache.com/im/pictures/3e38b958-3ee6-43cb-9d07-7c35045584bf.jpg",
+    "https://a2.muscache.com/im/pictures/69a5dccb-fb34-4600-a7d8-c47b6b1565ea.jpg",
+    "https://a2.muscache.com/im/pictures/dedd197c-9606-4246-9a81-ae1be6ae6e61.jpg",
+    "https://a2.muscache.com/im/pictures/4029375e-3e6b-43fb-9c80-7f15d226ed82.jpg",
+    "https://a2.muscache.com/im/pictures/47c02adc-f80f-4044-b1ad-333f4f172ccf.jpg",
+    "https://a2.muscache.com/im/pictures/f03430ba-255b-430b-a589-b3945a1464a0.jpg",
+    "https://a2.muscache.com/im/pictures/11aa1a71-485b-4873-8d47-95925decd89e.jpg",
+    "https://a2.muscache.com/im/pictures/230c9606-e40c-4ff0-852d-02d373b5e9a5.jpg",
+    "https://a2.muscache.com/im/pictures/d45e101d-fd4b-47f4-afae-462ce8b23ce3.jpg",
+    "https://a2.muscache.com/im/pictures/722a8686-275d-4c23-bb95-ff11a598b8a0.jpg"
+  ],
+  "title": "Apt à Montmartre lumineux et cosy",
+  "description": "Mon appartement est au pied de Montmartre, juste en bas des vignes, à moins de 10 min du Sacré Coeur. A 2 min du métro sur la ligne 12, il y a tous les commerces nécessaires dans le quartier.\nL'appartement vient d'être refait à neuf.",
+  "price": 80,
+  "ratingValue": 5,
+  "reviews": 80,
+  "loc": {
+    "lat": 48.8901751,
+    "lon": 2.3374505
+  }
+}, {
+  "id": 17,
+  "cityId": "los_angeles",
+  "userId": 2,
+  "photos": [
+    "https://a0.muscache.com/airbnb/static/destinations/o-Paris_480x320.jpg",
+    "https://a0.muscache.com/airbnb/static/destinations/o-Paris_480x320.jpg"
+  ],
+  "title": "Logement entier - Gambetta, Paris",
+  "description": "Deux pièces à Gambetta. Une chambre et un salon avec cuisine ouverte. Salle de bain avec toilettes et baignoire. Plusieurs commerces tout au long de la rue.\nProche du cimetière Père Lachaise, de Belleville, et du Parc des Buttes Chaumont.\nTrès calme.",
+  "price": 20,
+  "ratingValue": 4,
+  "reviews": 5,
+  "loc": {
+    "lat": 48.8613664,
+    "lon": 2.3981123
+  }
+}, {
+  "id": 18,
+  "cityId": "los_angeles",
+  "userId": 3,
+  "photos": [
+    "https://a2.muscache.com/im/pictures/60541451/7a1644c5_original.jpg",
+    "https://a1.muscache.com/im/pictures/60536951/d2059103_original.jpg",
+    "https://a0.muscache.com/im/pictures/60541519/08ccb050_original.jpg",
+    "https://a0.muscache.com/im/pictures/60541424/83488b39_original.jpg",
+    "https://a2.muscache.com/im/pictures/60541484/6a88b706_original.jpg",
+    "https://a1.muscache.com/im/pictures/60537294/c7577313_original.jpg",
+    "https://a1.muscache.com/im/pictures/60537654/5dbbc5d9_original.jpg",
+    "https://a2.muscache.com/im/pictures/60538349/bef606a3_original.jpg",
+    "https://a0.muscache.com/im/pictures/60538379/37f848e3_original.jpg",
+    "https://a1.muscache.com/im/pictures/60538410/9af3b439_original.jpg",
+    "https://a2.muscache.com/im/pictures/60539013/fcfbe95d_original.jpg",
+    "https://a0.muscache.com/im/pictures/60539030/8732066b_original.jpg",
+    "https://a0.muscache.com/im/pictures/60539054/906a0542_original.jpg",
+    "https://a0.muscache.com/im/pictures/60539548/49c8d401_original.jpg",
+    "https://a0.muscache.com/im/pictures/60539594/a1d8667c_original.jpg",
+    "https://a1.muscache.com/im/pictures/60539642/dbb4e6ee_original.jpg",
+    "https://a0.muscache.com/im/pictures/60539683/dd9b4a3f_original.jpg",
+    "https://a1.muscache.com/im/pictures/60540457/b963f141_original.jpg",
+    "https://a2.muscache.com/im/pictures/78853341/ad886258_original.jpg",
+    "https://a0.muscache.com/im/pictures/60540482/d56ffb2c_original.jpg",
+    "https://a2.muscache.com/im/pictures/60540618/a2369383_original.jpg",
+    "https://a0.muscache.com/im/pictures/60541371/9f79e106_original.jpg",
+    "https://a1.muscache.com/im/pictures/60542250/8cdcfcf2_original.jpg",
+    "https://a0.muscache.com/im/pictures/60541554/46fb4044_original.jpg",
+    "https://a2.muscache.com/im/pictures/60541761/a90ef5a2_original.jpg",
+    "https://a0.muscache.com/im/pictures/60542274/f9066bc5_original.jpg",
+    "https://a2.muscache.com/im/pictures/60541808/90bf2896_original.jpg",
+    "https://a1.muscache.com/im/pictures/60541906/230ad393_original.jpg"
+  ],
+  "title": "Exceptionnl apt 6 p. on River Seine",
+  "description": "Vue exceptionnelle et hypercentral sont les meilleurs mots pour décrire notre appartement situé dans un très bel immeuble du 18e siècle au coeur du quartier latin en face de Notre-Dame.\nPour voir toutes les photos clickez sur celle du haut.",
+  "price": 480,
+  "ratingValue": 5,
+  "reviews": 19,
+  "loc": {
+    "lat": 48.8534078,
+    "lon": 2.3434604
+  }
+}, {
+  "id": 19,
+  "cityId": "los_angeles",
+  "userId": 4,
+  "photos": [
+    "https://a2.muscache.com/im/pictures/a560cdc0-425d-4d7b-ab8a-f98481eeb23f.jpg",
+    "https://a2.muscache.com/im/pictures/38eb9bfe-bd03-4c21-a3b8-4d3c8e44c4c9.jpg",
+    "https://a2.muscache.com/im/pictures/3e3b2eda-f99f-4ac3-94dd-3c3dc8f80c7a.jpg",
+    "https://a2.muscache.com/im/pictures/25308387-a29c-4442-b927-39f2bd9c0e6f.jpg",
+    "https://a2.muscache.com/im/pictures/75eddc91-0cc8-4d05-8edd-7c726c5dea07.jpg",
+    "https://a2.muscache.com/im/pictures/db9f14c0-e7bc-4d2c-a87a-3f8ed0dce7ff.jpg",
+    "https://a2.muscache.com/im/pictures/7def02c0-263e-411d-be58-88c3fba2c4fc.jpg",
+    "https://a2.muscache.com/im/pictures/65487b48-44e1-4db4-ba32-bf7c164c7329.jpg",
+    "https://a2.muscache.com/im/pictures/873a4707-ab0d-4b44-a564-65f2e6db723e.jpg",
+    "https://a2.muscache.com/im/pictures/c27e1b16-3ee6-428f-b299-68d4cb4d50f6.jpg",
+    "https://a2.muscache.com/im/pictures/4b36c0da-2184-4943-92d3-e5106de27a9a.jpg"
+  ],
+  "title": "Vue Tour Eiffel à Saint Germain!",
+  "description": "Appartement refait à neuf plein charme rue du Cherche-Midi, au cœur du 6eme arrondissement. A deux pas du Luxembourg et du Bon Marché. Deux chambres, sublime vue sur la Tour Eiffel, 2 balcons, très jolie salle de bain avec WC séparés. Cuisine équipée ouverte, canapé-lit, wifi... Un rêve!",
+  "price": 200,
+  "ratingValue": 5,
+  "reviews": 48,
+  "loc": {
+    "lat": 48.8480923,
+    "lon": 2.3215788
+  }
+}, {
+  "id": 20,
+  "cityId": "los_angeles",
+  "userId": 5,
+  "photos": [
+    "https://a2.muscache.com/im/pictures/a560cdc0-425d-4d7b-ab8a-f98481eeb23f.jpg",
+    "https://a2.muscache.com/im/pictures/38eb9bfe-bd03-4c21-a3b8-4d3c8e44c4c9.jpg",
+    "https://a2.muscache.com/im/pictures/3e3b2eda-f99f-4ac3-94dd-3c3dc8f80c7a.jpg",
+    "https://a2.muscache.com/im/pictures/25308387-a29c-4442-b927-39f2bd9c0e6f.jpg",
+    "https://a2.muscache.com/im/pictures/75eddc91-0cc8-4d05-8edd-7c726c5dea07.jpg",
+    "https://a2.muscache.com/im/pictures/db9f14c0-e7bc-4d2c-a87a-3f8ed0dce7ff.jpg",
+    "https://a2.muscache.com/im/pictures/7def02c0-263e-411d-be58-88c3fba2c4fc.jpg",
+    "https://a2.muscache.com/im/pictures/65487b48-44e1-4db4-ba32-bf7c164c7329.jpg",
+    "https://a2.muscache.com/im/pictures/873a4707-ab0d-4b44-a564-65f2e6db723e.jpg",
+    "https://a2.muscache.com/im/pictures/c27e1b16-3ee6-428f-b299-68d4cb4d50f6.jpg",
+    "https://a2.muscache.com/im/pictures/4b36c0da-2184-4943-92d3-e5106de27a9a.jpg"
+  ],
+  "title": "Eiffel Tower Luxury 90m², 2 Terraces",
+  "description": "This is a completely renovated flat, close to Eiffel Tower and the Seine river, meant to inspire a true Parisian experience. Elegant two bedrooms of about 90 sqm with 2 terraces and a private car park.",
+  "price": 200,
+  "ratingValue": 5,
+  "reviews": 48,
+  "loc": {
+    "lat": 48.8480923,
+    "lon": 2.3215788
+  }
+}, {
+  "id": 21,
+  "cityId": "berlin",
+  "userId": 1,
+  "photos": [
+    "https://a2.muscache.com/im/pictures/52a738e1-d699-4e6e-af31-b7aaf59e2b03.jpg",
+    "https://a2.muscache.com/im/pictures/128dc52b-d10a-49f7-9e88-e11beee90491.jpg",
+    "https://a2.muscache.com/im/pictures/584f9bfe-7048-4f60-822d-54ddabd76c81.jpg",
+    "https://a2.muscache.com/im/pictures/13276e19-fa34-47ee-b2b5-ef94da10e89a.jpg",
+    "https://a2.muscache.com/im/pictures/3e38b958-3ee6-43cb-9d07-7c35045584bf.jpg",
+    "https://a2.muscache.com/im/pictures/69a5dccb-fb34-4600-a7d8-c47b6b1565ea.jpg",
+    "https://a2.muscache.com/im/pictures/dedd197c-9606-4246-9a81-ae1be6ae6e61.jpg",
+    "https://a2.muscache.com/im/pictures/4029375e-3e6b-43fb-9c80-7f15d226ed82.jpg",
+    "https://a2.muscache.com/im/pictures/47c02adc-f80f-4044-b1ad-333f4f172ccf.jpg",
+    "https://a2.muscache.com/im/pictures/f03430ba-255b-430b-a589-b3945a1464a0.jpg",
+    "https://a2.muscache.com/im/pictures/11aa1a71-485b-4873-8d47-95925decd89e.jpg",
+    "https://a2.muscache.com/im/pictures/230c9606-e40c-4ff0-852d-02d373b5e9a5.jpg",
+    "https://a2.muscache.com/im/pictures/d45e101d-fd4b-47f4-afae-462ce8b23ce3.jpg",
+    "https://a2.muscache.com/im/pictures/722a8686-275d-4c23-bb95-ff11a598b8a0.jpg"
+  ],
+  "title": "Apt à Montmartre lumineux et cosy",
+  "description": "Mon appartement est au pied de Montmartre, juste en bas des vignes, à moins de 10 min du Sacré Coeur. A 2 min du métro sur la ligne 12, il y a tous les commerces nécessaires dans le quartier.\nL'appartement vient d'être refait à neuf.",
+  "price": 80,
+  "ratingValue": 5,
+  "reviews": 80,
+  "loc": {
+    "lat": 48.8901751,
+    "lon": 2.3374505
+  }
+}, {
+  "id": 22,
+  "cityId": "berlin",
+  "userId": 2,
+  "photos": [
+    "https://a0.muscache.com/airbnb/static/destinations/o-Paris_480x320.jpg",
+    "https://a0.muscache.com/airbnb/static/destinations/o-Paris_480x320.jpg"
+  ],
+  "title": "Logement entier - Gambetta, Paris",
+  "description": "Deux pièces à Gambetta. Une chambre et un salon avec cuisine ouverte. Salle de bain avec toilettes et baignoire. Plusieurs commerces tout au long de la rue.\nProche du cimetière Père Lachaise, de Belleville, et du Parc des Buttes Chaumont.\nTrès calme.",
+  "price": 20,
+  "ratingValue": 4,
+  "reviews": 5,
+  "loc": {
+    "lat": 48.8613664,
+    "lon": 2.3981123
+  }
+}, {
+  "id": 23,
+  "cityId": "berlin",
+  "userId": 3,
+  "photos": [
+    "https://a2.muscache.com/im/pictures/60541451/7a1644c5_original.jpg",
+    "https://a1.muscache.com/im/pictures/60536951/d2059103_original.jpg",
+    "https://a0.muscache.com/im/pictures/60541519/08ccb050_original.jpg",
+    "https://a0.muscache.com/im/pictures/60541424/83488b39_original.jpg",
+    "https://a2.muscache.com/im/pictures/60541484/6a88b706_original.jpg",
+    "https://a1.muscache.com/im/pictures/60537294/c7577313_original.jpg",
+    "https://a1.muscache.com/im/pictures/60537654/5dbbc5d9_original.jpg",
+    "https://a2.muscache.com/im/pictures/60538349/bef606a3_original.jpg",
+    "https://a0.muscache.com/im/pictures/60538379/37f848e3_original.jpg",
+    "https://a1.muscache.com/im/pictures/60538410/9af3b439_original.jpg",
+    "https://a2.muscache.com/im/pictures/60539013/fcfbe95d_original.jpg",
+    "https://a0.muscache.com/im/pictures/60539030/8732066b_original.jpg",
+    "https://a0.muscache.com/im/pictures/60539054/906a0542_original.jpg",
+    "https://a0.muscache.com/im/pictures/60539548/49c8d401_original.jpg",
+    "https://a0.muscache.com/im/pictures/60539594/a1d8667c_original.jpg",
+    "https://a1.muscache.com/im/pictures/60539642/dbb4e6ee_original.jpg",
+    "https://a0.muscache.com/im/pictures/60539683/dd9b4a3f_original.jpg",
+    "https://a1.muscache.com/im/pictures/60540457/b963f141_original.jpg",
+    "https://a2.muscache.com/im/pictures/78853341/ad886258_original.jpg",
+    "https://a0.muscache.com/im/pictures/60540482/d56ffb2c_original.jpg",
+    "https://a2.muscache.com/im/pictures/60540618/a2369383_original.jpg",
+    "https://a0.muscache.com/im/pictures/60541371/9f79e106_original.jpg",
+    "https://a1.muscache.com/im/pictures/60542250/8cdcfcf2_original.jpg",
+    "https://a0.muscache.com/im/pictures/60541554/46fb4044_original.jpg",
+    "https://a2.muscache.com/im/pictures/60541761/a90ef5a2_original.jpg",
+    "https://a0.muscache.com/im/pictures/60542274/f9066bc5_original.jpg",
+    "https://a2.muscache.com/im/pictures/60541808/90bf2896_original.jpg",
+    "https://a1.muscache.com/im/pictures/60541906/230ad393_original.jpg"
+  ],
+  "title": "Exceptionnl apt 6 p. on River Seine",
+  "description": "Vue exceptionnelle et hypercentral sont les meilleurs mots pour décrire notre appartement situé dans un très bel immeuble du 18e siècle au coeur du quartier latin en face de Notre-Dame.\nPour voir toutes les photos clickez sur celle du haut.",
+  "price": 480,
+  "ratingValue": 5,
+  "reviews": 19,
+  "loc": {
+    "lat": 48.8534078,
+    "lon": 2.3434604
+  }
+}, {
+  "id": 24,
+  "cityId": "berlin",
+  "userId": 4,
+  "photos": [
+    "https://a2.muscache.com/im/pictures/a560cdc0-425d-4d7b-ab8a-f98481eeb23f.jpg",
+    "https://a2.muscache.com/im/pictures/38eb9bfe-bd03-4c21-a3b8-4d3c8e44c4c9.jpg",
+    "https://a2.muscache.com/im/pictures/3e3b2eda-f99f-4ac3-94dd-3c3dc8f80c7a.jpg",
+    "https://a2.muscache.com/im/pictures/25308387-a29c-4442-b927-39f2bd9c0e6f.jpg",
+    "https://a2.muscache.com/im/pictures/75eddc91-0cc8-4d05-8edd-7c726c5dea07.jpg",
+    "https://a2.muscache.com/im/pictures/db9f14c0-e7bc-4d2c-a87a-3f8ed0dce7ff.jpg",
+    "https://a2.muscache.com/im/pictures/7def02c0-263e-411d-be58-88c3fba2c4fc.jpg",
+    "https://a2.muscache.com/im/pictures/65487b48-44e1-4db4-ba32-bf7c164c7329.jpg",
+    "https://a2.muscache.com/im/pictures/873a4707-ab0d-4b44-a564-65f2e6db723e.jpg",
+    "https://a2.muscache.com/im/pictures/c27e1b16-3ee6-428f-b299-68d4cb4d50f6.jpg",
+    "https://a2.muscache.com/im/pictures/4b36c0da-2184-4943-92d3-e5106de27a9a.jpg"
+  ],
+  "title": "Vue Tour Eiffel à Saint Germain!",
+  "description": "Appartement refait à neuf plein charme rue du Cherche-Midi, au cœur du 6eme arrondissement. A deux pas du Luxembourg et du Bon Marché. Deux chambres, sublime vue sur la Tour Eiffel, 2 balcons, très jolie salle de bain avec WC séparés. Cuisine équipée ouverte, canapé-lit, wifi... Un rêve!",
+  "price": 200,
+  "ratingValue": 5,
+  "reviews": 48,
+  "loc": {
+    "lat": 48.8480923,
+    "lon": 2.3215788
+  }
+}, {
+  "id": 25,
+  "cityId": "berlin",
+  "userId": 5,
+  "photos": [
+    "https://a2.muscache.com/im/pictures/a560cdc0-425d-4d7b-ab8a-f98481eeb23f.jpg",
+    "https://a2.muscache.com/im/pictures/38eb9bfe-bd03-4c21-a3b8-4d3c8e44c4c9.jpg",
+    "https://a2.muscache.com/im/pictures/3e3b2eda-f99f-4ac3-94dd-3c3dc8f80c7a.jpg",
+    "https://a2.muscache.com/im/pictures/25308387-a29c-4442-b927-39f2bd9c0e6f.jpg",
+    "https://a2.muscache.com/im/pictures/75eddc91-0cc8-4d05-8edd-7c726c5dea07.jpg",
+    "https://a2.muscache.com/im/pictures/db9f14c0-e7bc-4d2c-a87a-3f8ed0dce7ff.jpg",
+    "https://a2.muscache.com/im/pictures/7def02c0-263e-411d-be58-88c3fba2c4fc.jpg",
+    "https://a2.muscache.com/im/pictures/65487b48-44e1-4db4-ba32-bf7c164c7329.jpg",
+    "https://a2.muscache.com/im/pictures/873a4707-ab0d-4b44-a564-65f2e6db723e.jpg",
+    "https://a2.muscache.com/im/pictures/c27e1b16-3ee6-428f-b299-68d4cb4d50f6.jpg",
+    "https://a2.muscache.com/im/pictures/4b36c0da-2184-4943-92d3-e5106de27a9a.jpg"
+  ],
+  "title": "Eiffel Tower Luxury 90m², 2 Terraces",
+  "description": "This is a completely renovated flat, close to Eiffel Tower and the Seine river, meant to inspire a true Parisian experience. Elegant two bedrooms of about 90 sqm with 2 terraces and a private car park.",
+  "price": 200,
+  "ratingValue": 5,
+  "reviews": 48,
+  "loc": {
+    "lat": 48.8480923,
+    "lon": 2.3215788
+  }
+}]

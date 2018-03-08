@@ -1,0 +1,46 @@
+[{
+  "source": "https://a0.muscache.com/airbnb/static/destinations/o-Paris_480x320.jpg",
+  "name": "Paris",
+  "id": "paris",
+  "loc": {
+    "lat": 48.8589507,
+    "lon": 2.3325361
+  },
+  "zoom": 11
+}, {
+  "source": "https://a0.muscache.com/airbnb/static/destinations/o-New_York_480x320.jpg",
+  "name": "New York",
+  "id": "new_york",
+  "loc": {
+    "lat": 48.8609684,
+    "lon": 2.2667759
+  },
+  "zoom": 8
+}, {
+  "source": "https://a0.muscache.com/airbnb/static/destinations/o-London_480x320.jpg",
+  "name": "London",
+  "id": "london",
+  "loc": {
+    "lat": 48.8609684,
+    "lon": 2.2667759
+  },
+  "zoom": 8
+}, {
+  "source": "https://a0.muscache.com/airbnb/static/destinations/o-Los_Angeles_480x320.jpg",
+  "name": "Los Angeles",
+  "id": "los_angeles",
+  "loc": {
+    "lat": 48.8609684,
+    "lon": 2.2667759
+  },
+  "zoom": 8
+}, {
+  "source": "https://a0.muscache.com/airbnb/static/destinations/o-Berlin_480x320.jpg",
+  "name": "Berlin",
+  "id": "berlin",
+  "loc": {
+    "lat": 48.8609684,
+    "lon": 2.2667759
+  },
+  "zoom": 8
+}]
