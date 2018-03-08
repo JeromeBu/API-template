@@ -337,7 +337,7 @@ xmlns:o="urn:schemas-microsoft-com:office:office">
                                                         <p>Have we got the right email address to reach you on? To confirm that you can get
                                                           our emails, just click the button below.</p>
                                                         <p>
-                                                          <a href="http://${url}/api/user/email_check?token=${
+                                                          <a href="http://${url}/api/users/email_check?token=${
       user.emailCheck.token
     }&email=${
       user.email

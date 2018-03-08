@@ -16,7 +16,7 @@ describe("Users", () => {
     });
   });
 
-  describe("POST /api/users/sign_up", function() {
+  describe("POST /api/auth/sign_up", function() {
     it("Not POST a user without password field", done => {
       let user = {
         name: "Name: No password given",
@@ -24,7 +24,7 @@ describe("Users", () => {
       };
       chai
         .request(server)
-        .post("/api/users/sign_up")
+        .post("/api/auth/sign_up")
         .send(user)
         .end((err, res) => {
           // should.not.exist(err);
@@ -43,7 +43,7 @@ describe("Users", () => {
       };
       chai
         .request(server)
-        .post("/api/users/sign_up")
+        .post("/api/auth/sign_up")
         .send(user)
         .end((err, res) => {
           // should.not.exist(err);
@@ -67,7 +67,7 @@ describe("Users", () => {
           };
           chai
             .request(server)
-            .post("/api/users/sign_up")
+            .post("/api/auth/sign_up")
             .send(newUser)
             .end((err, res) => {
               // should.not.exist(err);
@@ -89,7 +89,7 @@ describe("Users", () => {
       };
       chai
         .request(server)
-        .post("/api/users/sign_up")
+        .post("/api/auth/sign_up")
         .send(user)
         .end((err, res) => {
           should.not.exist(err);
@@ -105,7 +105,7 @@ describe("Users", () => {
     });
   });
 
-  describe("POST /api/users/log_in", function() {
+  describe("POST /api/auth/log_in", function() {
     it("Returns user infos and token", function(done) {
       var password = "superpassword";
       factory.user({ emailCheckValid: true, password: password }, function(
@@ -117,7 +117,7 @@ describe("Users", () => {
         };
         chai
           .request(server)
-          .post(`/api/users/log_in`)
+          .post(`/api/auth/log_in`)
           .send(request)
           .end(function(err, res) {
             // expect(err).to.be.null;
@@ -143,7 +143,7 @@ describe("Users", () => {
         };
         chai
           .request(server)
-          .post(`/api/users/log_in`)
+          .post(`/api/auth/log_in`)
           .send(request)
           .end(function(err, res) {
             // expect(err).to.be.null;
@@ -165,7 +165,7 @@ describe("Users", () => {
         };
         chai
           .request(server)
-          .post(`/api/users/log_in`)
+          .post(`/api/auth/log_in`)
           .send(request)
           .end(function(err, res) {
             // expect(err).to.be.null;
@@ -187,7 +187,7 @@ describe("Users", () => {
         };
         chai
           .request(server)
-          .post(`/api/users/log_in`)
+          .post(`/api/auth/log_in`)
           .send(request)
           .end(function(err, res) {
             // expect(err).to.be.null;
@@ -202,13 +202,13 @@ describe("Users", () => {
     });
   });
 
-  describe("GET /api/users/email_check", function() {
+  describe("GET /api/auth/email_check", function() {
     it("Confirms email", function(done) {
       factory.user({ emailCheckValid: false }, function(user) {
         chai
           .request(server)
           .get(
-            `/api/users/email_check?token=${user.emailCheck.token}&email=${
+            `/api/auth/email_check?token=${user.emailCheck.token}&email=${
               user.email
             }`
           )
@@ -226,7 +226,7 @@ describe("Users", () => {
     it("Responds an error when called without token", function(done) {
       chai
         .request(server)
-        .get("/api/users/email_check")
+        .get("/api/auth/email_check")
         .end(function(err, res) {
           // expect(err).to.be.null;
           res.should.have.status(400);
@@ -238,9 +238,7 @@ describe("Users", () => {
     it("Responds an error when called with invalid token", function(done) {
       chai
         .request(server)
-        .get(
-          "/api/users/email_check?token=unexistingToken&email=email@mail.com"
-        )
+        .get("/api/auth/email_check?token=unexistingToken&email=email@mail.com")
         .end(function(err, res) {
           // expect(err).to.be.null;
           // expect(res).to.be.json;
@@ -255,7 +253,7 @@ describe("Users", () => {
         chai
           .request(server)
           .get(
-            `/api/users/email_check?token=${validUser.emailCheck.token}&email=${
+            `/api/auth/email_check?token=${validUser.emailCheck.token}&email=${
               validUser.email
             }`
           )
@@ -278,7 +276,7 @@ describe("Users", () => {
   //     factory.user({}, function(user) {
   //       chai
   //         .request(server)
-  //         .get(`/api/users/5a96bc300ca5d2095c159770`)
+  //         .get(`/api/auth/5a96bc300ca5d2095c159770`)
   //         .set("Authorization", `Bearer ${user.token}`)
   //         .set("Content-Type", "application/json")
   //         .end(function(err, res) {

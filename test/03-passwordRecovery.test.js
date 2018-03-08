@@ -9,7 +9,7 @@ var chaiHttp = require("chai-http");
 chai.use(chaiHttp);
 
 describe("Recovery of password", function() {
-  describe("POST /api/users/forgotten_password", function() {
+  describe("POST /api/auth/forgotten_password", function() {
     beforeEach(done => {
       User.remove({}, err => {
         done();
@@ -21,7 +21,7 @@ describe("Recovery of password", function() {
       };
       chai
         .request(server)
-        .post(`/api/users/forgotten_password`)
+        .post(`/api/auth/forgotten_password`)
         .send(body)
         .end(function(err, res) {
           // should.not.exist(err);
@@ -39,7 +39,7 @@ describe("Recovery of password", function() {
       let body = {};
       chai
         .request(server)
-        .post(`/api/users/forgotten_password`)
+        .post(`/api/auth/forgotten_password`)
         .send(body)
         .end(function(err, res) {
           res.should.have.status(400);
@@ -57,7 +57,7 @@ describe("Recovery of password", function() {
         };
         chai
           .request(server)
-          .post(`/api/users/forgotten_password`)
+          .post(`/api/auth/forgotten_password`)
           .send(body)
           .end(function(err, res) {
             res.should.have.status(400);
@@ -76,7 +76,7 @@ describe("Recovery of password", function() {
         };
         chai
           .request(server)
-          .post(`/api/users/forgotten_password`)
+          .post(`/api/auth/forgotten_password`)
           .send(body)
           .end(function(err, res) {
             should.not.exist(err);
@@ -93,7 +93,7 @@ describe("Recovery of password", function() {
     });
   });
 
-  describe("GET /api/users/reset_password", function() {
+  describe("GET /api/auth/reset_password", function() {
     const options = {
       validEmailUser: null,
       notValidEmailUser: null,
@@ -129,7 +129,7 @@ describe("Recovery of password", function() {
     });
   });
 
-  describe("POST /api/users/reset_password", function() {
+  describe("POST /api/auth/reset_password", function() {
     const options = {
       validEmailUser: null,
       notValidEmailUser: null,
@@ -164,7 +164,7 @@ describe("Recovery of password", function() {
       chai
         .request(server)
         .post(
-          `/api/users/reset_password?email=${validEmailUser.email}&token=${
+          `/api/auth/reset_password?email=${validEmailUser.email}&token=${
             validEmailUser.passwordChange.token
           }`
         )
@@ -186,7 +186,7 @@ describe("Recovery of password", function() {
       chai
         .request(server)
         .post(
-          `/api/users/reset_password?email=${validEmailUser.email}&token=${
+          `/api/auth/reset_password?email=${validEmailUser.email}&token=${
             validEmailUser.passwordChange.token
           }`
         )
@@ -208,7 +208,7 @@ describe("Recovery of password", function() {
       chai
         .request(server)
         .post(
-          `/api/users/reset_password?email=${validEmailUser.email}&token=${
+          `/api/auth/reset_password?email=${validEmailUser.email}&token=${
             validEmailUser.passwordChange.token
           }`
         )
@@ -264,7 +264,7 @@ function createTestUsers(options) {
 }
 
 function noEmailGiven(done, verb, body = {}) {
-  let request = chai.request(server)[verb](`/api/users/reset_password`);
+  let request = chai.request(server)[verb](`/api/auth/reset_password`);
   if (verb === "post") request = request.send(body);
 
   request.end(function(err, res) {
@@ -278,7 +278,7 @@ function noEmailGiven(done, verb, body = {}) {
 function noTokenGiven(done, verb, body = {}) {
   let request = chai
     .request(server)
-    [verb](`/api/users/reset_password?email=hello@mail.com`);
+    [verb](`/api/auth/reset_password?email=hello@mail.com`);
   if (verb === "post") request = request.send(body);
 
   request.end(function(err, res) {
@@ -292,7 +292,7 @@ function noTokenGiven(done, verb, body = {}) {
 function emailNotInDb(done, verb, body = {}) {
   let request = chai
     .request(server)
-    [verb](`/api/users/reset_password?email=hello@mail.com&token=some_token`);
+    [verb](`/api/auth/reset_password?email=hello@mail.com&token=some_token`);
   if (verb === "post") request = request.send(body);
 
   request.end(function(err, res) {
@@ -307,7 +307,7 @@ function wrongToken(done, verb, validEmailUser, body = {}) {
   let request = chai
     .request(server)
     [verb](
-      `/api/users/reset_password?email=${validEmailUser.email}&token=some_token`
+      `/api/auth/reset_password?email=${validEmailUser.email}&token=some_token`
     );
   if (verb === "post") request = request.send(body);
 
@@ -323,7 +323,7 @@ function linkUsed(done, verb, alreadyUsedLinkUser, body = {}) {
   let request = chai
     .request(server)
     [verb](
-      `/api/users/reset_password?email=${alreadyUsedLinkUser.email}&token=${
+      `/api/auth/reset_password?email=${alreadyUsedLinkUser.email}&token=${
         alreadyUsedLinkUser.passwordChange.token
       }`
     );
@@ -342,7 +342,7 @@ function tokenOutdated(done, verb, outDatedTokenUser, body = {}) {
   let request = chai
     .request(server)
     [verb](
-      `/api/users/reset_password?email=${outDatedTokenUser.email}&token=${
+      `/api/auth/reset_password?email=${outDatedTokenUser.email}&token=${
         outDatedTokenUser.passwordChange.token
       }`
     );
@@ -360,7 +360,7 @@ function notValidEmail(done, verb, notValidEmailUser, body = {}) {
   let request = chai
     .request(server)
     [verb](
-      `/api/users/reset_password?email=${notValidEmailUser.email}&token=${
+      `/api/auth/reset_password?email=${notValidEmailUser.email}&token=${
         notValidEmailUser.passwordChange.token
       }`
     );
@@ -380,7 +380,7 @@ function authorizeAccess(done, verb, validEmailUser, body = {}) {
   let request = chai
     .request(server)
     [verb](
-      `/api/users/reset_password?email=${validEmailUser.email}&token=${
+      `/api/auth/reset_password?email=${validEmailUser.email}&token=${
         validEmailUser.passwordChange.token
       }`
     );

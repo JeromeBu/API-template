@@ -334,7 +334,7 @@ xmlns:o="urn:schemas-microsoft-com:office:office">
                                                         <p class="hero">You forgot you password ?</p>
                                                         <p>Click on the button below to create a new password</p>
                                                         <p>
-                                                          <a href="http://${url}/api/user/forgotten_password?token=${
+                                                          <a href="http://${url}/api/users/forgotten_password?token=${
       user.passwordChange.token
     }&email=${
       user.email
