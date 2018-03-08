@@ -2,3 +2,5 @@ node_modules
 data
 .DS_Store
 .env
+coverage
+.nyc_output
