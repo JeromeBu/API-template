@@ -1,5 +1,5 @@
 var uid = require("uid2");
-var User = require("../models/User");
+var User = require("../server/api/user/model");
 //  options: email, token, password, emailCheckValid, emailCheckToken, emailCheckCreatedAt, name, description
 function user(options, callback) {
   const promise = new Promise((resolve, reject) => {

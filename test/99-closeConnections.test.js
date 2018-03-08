@@ -1,8 +1,10 @@
-let server = require("../server");
+const server = require("../index");
+const { mongooseDisconnect } = require("../server/server");
+
 describe("Closing connections", function() {
   it("Closes all connections", function(done) {
     server.close();
-    server.mongooseDisconnect(); // Needed in order to stop mocha from running
+    mongooseDisconnect(); // Needed in order to stop mocha from running
     done();
   });
 });

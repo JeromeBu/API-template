@@ -1,4 +1,4 @@
-const User = require("../models/User.js");
+const User = require("../api/user/model");
 const { errorHandler, checkLoggedIn } = require("./core");
 
 exports.handleResetPasswordErrors = function(options = {}) {

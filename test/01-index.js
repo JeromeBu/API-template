@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-let server = require("../server");
+let server = require("../index");
 
 var chai = require("chai");
 var expect = require("chai").expect;

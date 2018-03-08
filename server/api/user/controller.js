@@ -1,13 +1,13 @@
-const config = require("../config");
-const User = require("../models/User");
+const config = require("../../../config");
+const User = require("./model");
 const uid2 = require("uid2");
 const passport = require("passport");
 const mailgun = require("mailgun-js")({
   apiKey: process.env.MAILGUN_API_KEY,
   domain: process.env.MAILGUN_DOMAIN
 });
-const confirmEmail = require("../emails/confirmationEmail");
-const forgetPasswordEmail = require("../emails/forgetPasswordEmail");
+const confirmEmail = require("../../emails/confirmationEmail");
+const forgetPasswordEmail = require("../../emails/forgetPasswordEmail");
 
 // Display list of all Genre.
 exports.sign_up = function(req, res) {
