@@ -22,22 +22,4 @@ describe("Home", function() {
         });
     });
   });
-
-  describe("GET /api/home", function() {
-    it("respond with cities and featured", function(done) {
-      chai
-        .request(server)
-        .get("/api/home")
-        .end(function(err, res) {
-          should.not.exist(err);
-          res.should.be.json;
-          res.should.to.have.status(200);
-          expect(res.body)
-            .to.have.property("cities")
-            .to.be.a("array");
-          res.body.should.have.property("featured").be.a("array");
-          done();
-        });
-    });
-  });
 });

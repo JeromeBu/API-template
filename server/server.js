@@ -1,38 +1,36 @@
-var config = require("../config");
+var config = require("../config")
 
-var mongoose = require("mongoose");
+var mongoose = require("mongoose")
 mongoose.connect(config.MONGODB_URI, function(err) {
-  if (err) console.error("Could not connect to mongodb.");
-});
+  if (err) console.error("Could not connect to mongodb.")
+})
 
-var express = require("express");
-var app = express();
+var express = require("express")
+var app = express()
 
-var morgan = require("morgan"); // in order to log requests
+var morgan = require("morgan") // in order to log requests
 //we don't want it in test mode as it interfers with terminal display of test results
 if (config.ENV !== "test") {
-  app.use(morgan("dev"));
+  app.use(morgan("dev"))
 }
 
-var helmet = require("helmet"); // protection package
-app.use(helmet());
+var helmet = require("helmet") // protection package
+app.use(helmet())
 
-var compression = require("compression"); // compress server responses in GZIP
-app.use(compression());
+var compression = require("compression") // compress server responses in GZIP
+app.use(compression())
 
-var bodyParser = require("body-parser"); // to parse POST requests
-app.use(bodyParser.json());
+var bodyParser = require("body-parser") // to parse POST requests
+app.use(bodyParser.json())
 
-var User = require("../server/api/user/model");
-var Room = require("../models/Room");
-var City = require("../models/City");
+var User = require("../server/api/user/model")
 
-var passport = require("passport");
-app.use(passport.initialize()); // TODO test
+var passport = require("passport")
+app.use(passport.initialize()) // TODO test
 
-const { errorHandler } = require("../server/middlewares/core");
+const { errorHandler } = require("../server/middlewares/core")
 // Local for login + password
-var LocalStrategy = require("passport-local").Strategy;
+var LocalStrategy = require("passport-local").Strategy
 passport.use(
   new LocalStrategy(
     {
@@ -42,43 +40,33 @@ passport.use(
     },
     User.authenticateLocal()
   )
-);
+)
 
 // authorization bearer
-const HTTPBearerStrategy = require("passport-http-bearer").Strategy;
-passport.use(new HTTPBearerStrategy(User.authenticateBearer())); // La méthode `authenticateBearer` a été déclarée dans le model User
+const HTTPBearerStrategy = require("passport-http-bearer").Strategy
+passport.use(new HTTPBearerStrategy(User.authenticateBearer())) // La méthode `authenticateBearer` a été déclarée dans le model User
 
 app.get("/", function(req, res) {
-  res.send("Welcome to the Airbnb API.");
-});
+  res.send("Welcome to the Airbnb API.")
+})
 
-const cors = require("cors"); // to authorize request to the API from another domaine
-app.use("/api", cors());
+const cors = require("cors") // to authorize request to the API from another domaine
+app.use("/api", cors())
 
-const coreRoutes = require("../routes/core.js");
-
-const api = require("./api/api");
-app.use("/api", api);
-
-// const coreRoutes = require("../routes/core.js");
-// const userRoutes = require("../routes/user.js");
-// // const roomRoutes = require("./routes/room.js");
-
-app.use("/api", coreRoutes);
-// app.use("/api/user", userRoutes);
-// // app.use("/api/room", roomRoutes);
+const api = require("./api/api")
+app.use("/api", api)
 
 // Error 404 for all verbs (GET, POST, etc.) when page not found.
 app.all("*", function(req, res) {
-  res.status(404).json({ status: 404, error: "Not Found" });
-});
+  res.status(404).json({ status: 404, error: "Not Found" })
+})
 
 // Error handling middleware
 // This middleware is call with next(err_msg) within a route
-app.use(errorHandler);
+app.use(errorHandler)
 
 function mongooseDisconnect() {
-  mongoose.connection.close();
+  mongoose.connection.close()
 }
 
-module.exports = { app, mongooseDisconnect };
+module.exports = { app, mongooseDisconnect }
