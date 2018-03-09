@@ -14,7 +14,7 @@ you can run only the test you want with --grep yourKeyWord
 npm run testCover <!-- run test with cover -->
 
 A mailgun API and domain is needed to use mail (for signup and password recovery)
-It should be in .env :
+It should be in a .env file :
 MAILGUN_API_KEY = "your api key"
 MAILGUN_DOMAIN = "your domain"
 
