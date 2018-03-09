@@ -13,16 +13,11 @@ const forgetPasswordEmail = require("../../emails/forgetPasswordEmail")
 
 exports.initial_get_user = function(req, res, next) {
   const { currentUser } = req
-  console.log("currentUser email : ", currentUser.email)
-  console.log("Req.params is here : ", JSON.stringify(req.params))
-  console.log("Req.params.id is here : ", JSON.stringify(req.params.id))
-  // return res.send("hello")
   User.findById(req.params.id)
     .select("account")
     // .populate("account")
     .exec()
     .then(function(user) {
-      console.log("user in get user : ", user)
       if (!user) {
         res.status(404)
         return next("User not found")
