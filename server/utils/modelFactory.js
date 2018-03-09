@@ -1,10 +1,10 @@
-var uid = require("uid2");
-var User = require("../server/api/user/model");
+var uid = require("uid2")
+var User = require("../api/user/model")
 //  options: email, token, password, emailCheckValid, emailCheckToken, emailCheckCreatedAt, name, description
 function user(options, callback) {
   const promise = new Promise((resolve, reject) => {
-    var password = options.password || "password";
-    var newUser = new User({
+    const password = options.password || "password"
+    const newUser = new User({
       email: options.email || "emailCheck@testing.com",
       token: options.token || uid(32),
       emailCheck: {
@@ -18,27 +18,27 @@ function user(options, callback) {
         createdAt: options.passwordChangeCreatedAt || new Date()
       },
       account: {
-        name: options.name || "Testing emailCheck",
+        first_name: options.name || "Testing emailCheck",
         description: options.description || "An awesome description"
       }
-    });
+    })
     User.register(newUser, password, function(err, user) {
       if (err) {
         if (!callback) {
-          reject("Could not create user : " + err);
+          reject("Could not create user : " + err)
         } else {
-          console.error("Could not create user : " + err);
+          console.error("Could not create user : " + err)
         }
       } else {
         if (!callback) {
-          resolve(user);
+          resolve(user)
         } else {
-          callback(user);
+          callback(user)
         }
       }
-    });
-  });
-  return promise;
+    })
+  })
+  return promise
 }
 
-module.exports = { user: user };
+module.exports = { user: user }

@@ -1,38 +1,40 @@
-const config = require("../../../config");
-const User = require("./model");
-const uid2 = require("uid2");
-const passport = require("passport");
+const config = require("../../../config")
+const User = require("./model")
+const uid2 = require("uid2")
+const passport = require("passport")
 const mailgun = require("mailgun-js")({
   apiKey: process.env.MAILGUN_API_KEY,
   domain: process.env.MAILGUN_DOMAIN
-});
-const confirmEmail = require("../../emails/confirmationEmail");
-const forgetPasswordEmail = require("../../emails/forgetPasswordEmail");
+})
+const confirmEmail = require("../../emails/confirmationEmail")
+const forgetPasswordEmail = require("../../emails/forgetPasswordEmail")
 
 // Display list of all Genre.
 
 exports.initial_get_user = function(req, res, next) {
-  const { current_user } = req;
-  console.log("current_user email : ", current_user.email);
+  const { currentUser } = req
+  console.log("currentUser email : ", currentUser.email)
+  console.log("Req.params is here : ", JSON.stringify(req.params))
+  console.log("Req.params.id is here : ", JSON.stringify(req.params.id))
+  // return res.send("hello")
   User.findById(req.params.id)
     .select("account")
-    .populate("account.rooms")
-    .populate("account.favorites")
+    // .populate("account")
     .exec()
     .then(function(user) {
+      console.log("user in get user : ", user)
       if (!user) {
-        res.status(404);
-        return next("User not found");
+        res.status(404)
+        return next("User not found")
       }
-
       return res.json({
         _id: user._id,
         account: user.account
-      });
+      })
     })
     .catch(function(err) {
-      console.log(err.message);
-      res.status(400);
-      return next(err.message);
-    });
-};
+      console.error(err.message)
+      res.status(400)
+      return next(err.message)
+    })
+}
